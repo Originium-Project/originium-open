@@ -1,0 +1,80 @@
+{
+  "status": "ok",
+  "message": {
+    "DOI": "10.2469/faj.v58.n4.2453",
+    "title": [
+      "The Statistics of Sharpe Ratios"
+    ],
+    "author": [
+      {
+        "given": "Andrew W.",
+        "family": "Lo",
+        "sequence": "first",
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "container-title": [
+      "Financial Analysts Journal"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2002,
+          7
+        ]
+      ]
+    },
+    "published-print": {
+      "date-parts": [
+        [
+          2002,
+          7
+        ]
+      ]
+    },
+    "published-online": {
+      "date-parts": [
+        [
+          2019,
+          1,
+          2
+        ]
+      ]
+    },
+    "created": {
+      "date-parts": [
+        [
+          2006,
+          2,
+          27
+        ]
+      ],
+      "date-time": "2006-02-27T13:01:24Z",
+      "timestamp": 1141045284000
+    },
+    "volume": "58",
+    "issue": "4",
+    "page": "36-52",
+    "URL": "https://doi.org/10.2469/faj.v58.n4.2453",
+    "type": "journal-article",
+    "link": [
+      {
+        "URL": "https://www.tandfonline.com/doi/pdf/10.2469/faj.v58.n4.2453",
+        "content-type": "unspecified",
+        "content-version": "vor",
+        "intended-application": "similarity-checking"
+      }
+    ],
+    "relation": {},
+    "resource": {
+      "primary": {
+        "URL": "https://www.tandfonline.com/doi/full/10.2469/faj.v58.n4.2453"
+      }
+    }
+  }
+}

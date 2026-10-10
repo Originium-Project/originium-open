@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "research": {
+      "transport": "stdio",
+      "command": "/usr/bin/env",
+      "args": [
+        "-i",
+        "HOME=/ABSOLUTE/PATH/TO/HOME",
+        "PATH=/usr/bin:/bin",
+        "LANG=C.UTF-8",
+        "PYTHONPATH=/ABSOLUTE/PATH/TO/research-mcp/src",
+        "PYTHONNOUSERSITE=1",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "/ABSOLUTE/PATH/TO/research-mcp/.venv/bin/python",
+        "-P",
+        "-m",
+        "originium_research_mcp"
+      ],
+      "lifecycle": "lazy",
+      "requestTimeoutMs": 30000
+    }
+  }
+}

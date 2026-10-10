@@ -1,0 +1,11 @@
+# Security
+
+This project is not deployed as a service and is not independently security-audited. Fixed API origins, size/deadline limits and archived tests are bounded controls, not proof of safety or entitlement. Provider text is untrusted data; do not treat it as instructions. Keep stdio output reserved for MCP messages.
+
+Do not include credentials, private network names, operator paths, real client configuration or private source history in public patches. Until a public reporting channel is approved, report concerns privately to the project owner through an existing private channel; no public support address is established here.
+
+The local runner runs all target code (guards and tests) inside a Bubblewrap user/network/PID namespace with a read-only source/toolchain, a clean environment, masked private state and resource limits, including a 64-process cap. If containment or installed dependencies are unavailable, tests are NOT RUN. There is no bare-host fallback. Inventory and hash checks cannot establish absence of secrets; independent all-repository privacy review is a publication gate.
+
+For `--require-approved`, a small reviewed, data-only trusted launcher runs on the host, outside the sandbox and without importing repository Python code. It verifies the real index and worktree, then exports only the actual current commit object, its trees and allowlisted regular blobs into a fresh Git projection in scratch space. Private Git configuration, hooks, alternates, history and unreachable objects are never mounted into the test sandbox. The exact commit SHA is preserved; parent objects are absent from the projection, though the commit may name parents. The launcher has address-space, CPU, file-descriptor, file-size and 60-second limits but deliberately no process-count limit, because `RLIMIT_NPROC` is shared by all processes of the host user ID outside a user namespace. It starts at most one Git child at a time. Tests inside the sandbox cannot demonstrate host fork behavior.
+
+This is containment and consistency validation of the current HEAD, index and worktree, not a completed security audit and not a history check: the first publication commit must be verified manually to have zero parents. CI and hooks are not provided or verified here.

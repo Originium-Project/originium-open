@@ -1,0 +1,21 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "originium-research-mcp"
+version = "0.1.0"
+license = "MIT"
+license-files = ["LICENSE"]
+description = "Bounded scholarly discovery MCP server"
+requires-python = ">=3.11"
+dependencies = ["mcp==2.2.0", "httpx2==2.13.1", "defusedxml==0.7.1"]
+
+[project.scripts]
+originium-research-mcp = "originium_research_mcp.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/originium_research_mcp"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]

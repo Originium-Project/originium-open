@@ -1,0 +1,54 @@
+{
+  "note": "Parent trusted public GET samples; not an authenticated library test or an application smoke test. JSON fields bounded for fixtures. Crossref and OpenAlex are locally sanitized derivatives; their file hash/bytes describe current bytes. source_sha256/source_bytes identify each original response fixture. observed_at and HTTP data remain historical; no new query was made.",
+  "records": [
+    {
+      "provider": "crossref",
+      "url": "https://api.crossref.org/works/10.2469%2Ffaj.v58.n4.2453",
+      "observed_at": "2026-09-28T00:24:22.882280+00:00",
+      "http_status": 200,
+      "status": "retrieved_public_sample",
+      "file": "crossref.json",
+      "bytes": 1515,
+      "sha256": "1c7cc88d5f02f5e050270ac59d258f6045e25879596993b602a8ffbb4d9af805",
+      "source_sha256": "4d4ba5b2ba5965ac378a3550ec412534bb895e0d80184e11e80a8553cdcc8e77",
+      "source_bytes": 1803,
+      "derivation": {
+        "removed_fields": [
+          "message.author[*].affiliation"
+        ],
+        "reason": "Removed nonessential prose affiliation biography; parser does not consume affiliation.",
+        "no_new_query": true
+      }
+    },
+    {
+      "provider": "openalex",
+      "url": "https://api.openalex.org/works/https://doi.org/10.2469/faj.v58.n4.2453",
+      "observed_at": "2026-09-28T00:24:22.882625+00:00",
+      "http_status": 200,
+      "status": "retrieved_public_sample",
+      "file": "openalex.json",
+      "bytes": 4987,
+      "sha256": "0ae90c0868bf54fe00519aa246b1b13bed2713b37ee0ff1ca603806ef7c6318c",
+      "source_sha256": "d0640ac7b1e10e3cc668691658216170615aac53f15084df3e68976e95596f40",
+      "source_bytes": 5490,
+      "derivation": {
+        "removed_fields": [
+          "authorships[*].raw_affiliation_strings",
+          "authorships[*].affiliations[*].raw_affiliation_string"
+        ],
+        "reason": "Removed nonessential raw prose affiliation biography; parser does not consume these fields, and institution_ids, institutions, authors and identifiers are retained.",
+        "no_new_query": true
+      }
+    },
+    {
+      "provider": "arxiv",
+      "url": "https://export.arxiv.org/api/query?id_list=1706.03762v7&max_results=1",
+      "observed_at": "2026-09-28T00:24:22.882884+00:00",
+      "http_status": 200,
+      "status": "retrieved_public_sample",
+      "file": "arxiv.xml",
+      "bytes": 2966,
+      "sha256": "ab4bbace8cd8b1601aed73604d539f251e2e419e4d1b93a17a8f82ffde3f7039"
+    }
+  ]
+}

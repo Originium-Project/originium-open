@@ -1,0 +1,7 @@
+# Contributing
+
+This repository is MIT-licensed. Make bounded changes with focused offline checks; keep secrets, real client configuration, private infrastructure, operator state and private history outside the public repository.
+
+The imported runtime, all 55 original component tests, lock, client template and integration code remain immutable, except for four documented payload derivations: license metadata, Crossref and OpenAlex raw prose affiliation removal, and the observation provenance that records them. The other 18 frozen imports stay byte-identical. Follow [source-of-truth policy](docs/SOURCE-OF-TRUTH.md) before proposing an import update. Update the explicit [manifest](release-manifest.json) only through review; never weaken ignored-state or documentation-link tests. Preserve upstream notices and reported metadata unknowns/partial failures. MCP stdout is protocol-only.
+
+Run `scripts/check-local.sh --require-approved` from the root for an approved Git checkout, with an already installed component virtualenv or `RESEARCH_MCP_VENV`. For a partially approved local candidate only, omit the flag. Network, live providers and optional Pi integration are outside these checks. Do not commit generated caches or retained audit artifacts. Approved-commit checks use `scripts/check-local.sh --require-approved`, never a host-run guard; they cover the current commit only, not history. See [release checklist](docs/RELEASE-CHECKLIST.md) for decisions that local preparation cannot supply.

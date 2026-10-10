@@ -1,0 +1,164 @@
+{
+  "decisions": {
+    "copyright_owner": "Originium Project contributors",
+    "project_license": "MIT",
+    "source_version": "4aefd8ae0ab6460a671a0ce774fc0abc585ce9a0"
+  },
+  "derived_payloads": {
+    "projects/research-mcp/pyproject.toml": {
+      "current_bytes": 537,
+      "current_sha256": "68638b00982cfc78095a477fee7cdb1807df554e38292a196cc0b01de09d04cd",
+      "reason": "Add only PEP 639 MIT license expression and LICENSE file metadata.",
+      "source_bytes": 493,
+      "source_sha256": "115b536b1d4dfd9d8aa8d9c421ca74572c9a92d1719ca0919da9fff7b259dcd4"
+    },
+    "projects/research-mcp/reference_samples/OBSERVATIONS.json": {
+      "current_bytes": 2448,
+      "current_sha256": "86307f1b961104a06f6807332714b0dcfa5a4827976610a4d3547ee441fdf0bc",
+      "reason": "Record Crossref and OpenAlex source provenance, local sanitization and current hash/bytes without a new query.",
+      "source_bytes": 1319,
+      "source_sha256": "f32b6f99f0a1388601f21b9e79cfd9b12dc1181e0519a3453305d0f5300047a4"
+    },
+    "projects/research-mcp/reference_samples/crossref.json": {
+      "current_bytes": 1515,
+      "current_sha256": "1c7cc88d5f02f5e050270ac59d258f6045e25879596993b602a8ffbb4d9af805",
+      "reason": "Remove only nonessential prose author affiliation; parser output unchanged.",
+      "source_bytes": 1803,
+      "source_sha256": "4d4ba5b2ba5965ac378a3550ec412534bb895e0d80184e11e80a8553cdcc8e77"
+    },
+    "projects/research-mcp/reference_samples/openalex.json": {
+      "current_bytes": 4987,
+      "current_sha256": "0ae90c0868bf54fe00519aa246b1b13bed2713b37ee0ff1ca603806ef7c6318c",
+      "reason": "Remove only nonessential raw prose author affiliation fields; parser output unchanged.",
+      "source_bytes": 5490,
+      "source_sha256": "d0640ac7b1e10e3cc668691658216170615aac53f15084df3e68976e95596f40"
+    }
+  },
+  "gates": {
+    "contained_tests": {
+      "approved": true,
+      "evidence": "2026-10-10 parent contained run of final corrected runtime/guard/projection/tests: 55 component + 132 guard tests passed, network disabled and read-only target with bounded scratch. Exact committed approved-mode run required before push."
+    },
+    "copyright_owner": {
+      "approved": true,
+      "evidence": "User declaration, 2026-10-10: copyright holder Originium Project contributors; authority to release project-original software and documentation under MIT."
+    },
+    "dependency_obligations": {
+      "approved": true,
+      "evidence": "Source-only Git distribution with no bundled dependency source/wheels/binaries/venv. Actual retained license/notice data for 38 locked distributions assessed; MPL 2.0 sections 3.1-3.4, Apache 2.0 section 4 and MIT/BSD/PSF terms scoped in DEPENDENCIES.md. No concrete blocker for this unbundled form; not formal legal or all-distribution clearance."
+    },
+    "final_publication": {
+      "approved": true,
+      "evidence": "User explicit publication instruction,2026-10-10: reviewed Research MCP to Originium-Project/originium-open under MIT. Parent must push only verified parentless exact commit after final Opus review; actual publication/post-publication verification receipts are separate."
+    },
+    "hosting": {
+      "approved": true,
+      "evidence": "User selected public Originium-Project/originium-open. Parent read-only GitHub preflight confirms destination organization and authenticated active admin membership; no existing destination repository observed."
+    },
+    "owner_design": {
+      "approved": true,
+      "evidence": "User authorized reviewed Research MCP-only curated monorepo release. Exact44-path inventory includes two MIT notices and only documented licensing/prose-minimization derivations; no arbitraryfetch/auth/PDF/trading features or CI scaffold."
+    },
+    "privacy_review": {
+      "approved": true,
+      "evidence": "2026-10-10 exact44-file export: gitleaks8.30.1 findings0, actual operator private-pattern and home-directory screening0; originalruntime/templates/tests remain unchanged. Independent Opus static precheck findings corrected; final exact-commit review/checks required before push. Not proof all secrets absent."
+    },
+    "project_license": {
+      "approved": true,
+      "evidence": "User declaration, 2026-10-10: copyright holder Originium Project contributors; authority to release project-original software and documentation under MIT."
+    },
+    "rights": {
+      "approved": true,
+      "evidence": "User declared authority for original MIT software/documentation. Provider metadata scoped to documented Crossref facts/arXiv descriptiveCC0/OpenAlex API CC0; all nonessential Crossref/OpenAlex raw affiliation prose removed with original provenance. No papers/PDFs/dependencycode included; no blanket legalclearance."
+    },
+    "source_of_truth": {
+      "approved": true,
+      "evidence": "Public repository is source for this reviewed published release only. Active private source/client configurations and preexistingdirtywork preserved; no automatic mirror, history export or source/client migration. Future component/version changes need separate review."
+    },
+    "source_version": {
+      "approved": true,
+      "evidence": "Supplied reviewed source 4aefd8ae0ab6460a671a0ce774fc0abc585ce9a0 retained; preexisting private transport/test changes excluded. Only the four recorded payload derivations are authorized."
+    }
+  },
+  "immutable_imports_sha256": {
+    "projects/research-mcp/example-client-config.json": "bd7d636cc94567a3e636ec54e627675f2f76248157e7a35655b6a452709d2140",
+    "projects/research-mcp/integration/pi-connection-check.mjs": "e798e99ae4b22520fbd533c68fcd5eda95fba12f941f590fa5c6b3580f226203",
+    "projects/research-mcp/pyproject.toml": "68638b00982cfc78095a477fee7cdb1807df554e38292a196cc0b01de09d04cd",
+    "projects/research-mcp/reference_samples/OBSERVATIONS.json": "86307f1b961104a06f6807332714b0dcfa5a4827976610a4d3547ee441fdf0bc",
+    "projects/research-mcp/reference_samples/arxiv.xml": "ab4bbace8cd8b1601aed73604d539f251e2e419e4d1b93a17a8f82ffde3f7039",
+    "projects/research-mcp/reference_samples/crossref.json": "1c7cc88d5f02f5e050270ac59d258f6045e25879596993b602a8ffbb4d9af805",
+    "projects/research-mcp/reference_samples/openalex.json": "0ae90c0868bf54fe00519aa246b1b13bed2713b37ee0ff1ca603806ef7c6318c",
+    "projects/research-mcp/requirements.lock": "2083e9d195f5143be51e85b6f129d7b9ee3d9bd52dd338cc097fe8c08be09895",
+    "projects/research-mcp/src/originium_research_mcp/__init__.py": "4683969b8432660ae1f6bde475c3dd29b8f6a6705a6218af120a90a35966b9a5",
+    "projects/research-mcp/src/originium_research_mcp/__main__.py": "d601a8873e5a8110fd0710bbf500f8c30edd32642a3cb248aa7c69d78511398b",
+    "projects/research-mcp/src/originium_research_mcp/identifiers.py": "af558606ac54166a5fa42fd21d059693da9e9a89a6353295749fbb23cc65a34c",
+    "projects/research-mcp/src/originium_research_mcp/library.py": "66b18ef23e45f6437ea3ca43a7a279c63b25a479a0d7b1b33a96057990520ce6",
+    "projects/research-mcp/src/originium_research_mcp/models.py": "56169a1a800fd0d7f86f39f582b08435974be00364fe00b6e6059b60d7696647",
+    "projects/research-mcp/src/originium_research_mcp/providers.py": "49042a25fe3508191cdbba622d1cb183ca906f7ece317cc4bbc5dea639eb1398",
+    "projects/research-mcp/src/originium_research_mcp/server.py": "75c66fb7072982235829a7576158d88a605f9e1b6273ccfaf46094417bf5b900",
+    "projects/research-mcp/src/originium_research_mcp/service.py": "ee55815bb91b036abcfc4d621eadb814c0f721b772d62a10c5729265e2444798",
+    "projects/research-mcp/src/originium_research_mcp/transport.py": "0d73eec5b14b3b7f757a52300e0ce33658462f2b8c4ca2673e47f46dd5a78b29",
+    "projects/research-mcp/tests/test_identifiers_providers.py": "facb8ed0f57cf90646924e508e1fac671fb8ec7ad5368f726549fef540f26f91",
+    "projects/research-mcp/tests/test_protocol.py": "6471b6243a46e43a8fc19f8948cacef35f9e019d498306c8306bd739e0af6c59",
+    "projects/research-mcp/tests/test_publication.py": "59c8a749ce70efc3e3e3df953a54f63074a2fc6e03c2f537f6d07af1aaf498c1",
+    "projects/research-mcp/tests/test_regressions.py": "f39676763c5139f8e33c3c538e982be4d4b49a97d84012561d2bc77ead11c5d4",
+    "projects/research-mcp/tests/test_transport_service.py": "33c619d17a961d5c5e764164e5be72e8a844c301a0f1dbdb3d53faa7a2b6d71c"
+  },
+  "inventory_authorization": "User-authorized Research MCP-only MIT publication,2026-10-10; exact44publicpaths. Manifestrecords pre-publication decisions, not proof of remote publication or post-publication review.",
+  "limitations": [
+    "Hashes establish imported-byte identity, not absence of secrets or rights clearance.",
+    "No automatic mirroring, approval, publication or source-of-truth migration.",
+    "MIT covers project-original software/documentation only, not provider fixtures, dependency code or full papers.",
+    "This manifest records pre-publication approval state, not proof of actual remote publication; publication and post-publication review receipts are recorded separately. Archived observations are not fresh tests or audit clearance.",
+    "Approved-mode validation covers only the current HEAD, index and worktree, not commit history. The first publication commit must have zero parent headers, and exactly that verified SHA must be pushed."
+  ],
+  "public_paths": [
+    ".gitignore",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "LICENSING.md",
+    "README.md",
+    "SECURITY.md",
+    "docs/RELEASE-CHECKLIST.md",
+    "docs/SOURCE-OF-TRUTH.md",
+    "projects/research-mcp/.gitignore",
+    "projects/research-mcp/DEPENDENCIES.md",
+    "projects/research-mcp/DESIGN.md",
+    "projects/research-mcp/LICENSE",
+    "projects/research-mcp/PI-SETUP.md",
+    "projects/research-mcp/README.md",
+    "projects/research-mcp/SOURCES.md",
+    "projects/research-mcp/VALIDATION.md",
+    "projects/research-mcp/example-client-config.json",
+    "projects/research-mcp/integration/README.md",
+    "projects/research-mcp/integration/pi-connection-check.mjs",
+    "projects/research-mcp/pyproject.toml",
+    "projects/research-mcp/reference_samples/OBSERVATIONS.json",
+    "projects/research-mcp/reference_samples/arxiv.xml",
+    "projects/research-mcp/reference_samples/crossref.json",
+    "projects/research-mcp/reference_samples/openalex.json",
+    "projects/research-mcp/requirements.lock",
+    "projects/research-mcp/scripts/check-local.sh",
+    "projects/research-mcp/src/originium_research_mcp/__init__.py",
+    "projects/research-mcp/src/originium_research_mcp/__main__.py",
+    "projects/research-mcp/src/originium_research_mcp/identifiers.py",
+    "projects/research-mcp/src/originium_research_mcp/library.py",
+    "projects/research-mcp/src/originium_research_mcp/models.py",
+    "projects/research-mcp/src/originium_research_mcp/providers.py",
+    "projects/research-mcp/src/originium_research_mcp/server.py",
+    "projects/research-mcp/src/originium_research_mcp/service.py",
+    "projects/research-mcp/src/originium_research_mcp/transport.py",
+    "projects/research-mcp/tests/test_identifiers_providers.py",
+    "projects/research-mcp/tests/test_protocol.py",
+    "projects/research-mcp/tests/test_publication.py",
+    "projects/research-mcp/tests/test_regressions.py",
+    "projects/research-mcp/tests/test_transport_service.py",
+    "release-manifest.json",
+    "scripts/check-local.sh",
+    "scripts/check-release.py",
+    "tests/test_release_guard.py"
+  ],
+  "schema_version": 1,
+  "source_revision": "4aefd8ae0ab6460a671a0ce774fc0abc585ce9a0",
+  "status": "RELEASE_APPROVED"
+}
