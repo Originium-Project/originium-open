@@ -1,0 +1,93 @@
+/* Hand-authored structural policies. Load tokens.css and responsive.css first.
+   No palette, asset, root-font scaling, whole-page stage, or global reset. */
+.ast {
+  font-family: var(--ast-semantic-type-body-font-family);
+  font-size: var(--ast-semantic-type-body-font-size);
+  font-weight: var(--ast-semantic-type-body-font-weight);
+  line-height: var(--ast-semantic-type-body-line-height);
+  letter-spacing: var(--ast-semantic-type-body-letter-spacing);
+  overflow-wrap: anywhere;
+  --ast-density-inset: var(--ast-semantic-density-comfortable-inset);
+  --ast-density-row-padding: var(--ast-semantic-density-comfortable-row-padding);
+  --ast-density-gap: var(--ast-semantic-density-comfortable-gap);
+}
+.ast :where(*, *::before, *::after), .ast { box-sizing: border-box; }
+.ast :where(h1, h2, h3, p, dl, dd, ul, ol, figure) { margin: 0; }
+.ast :where(img, svg, video) { max-inline-size: 100%; block-size: auto; }
+.ast :where(input, select, textarea, button) { font: inherit; max-inline-size: 100%; }
+.ast :where(a, button, input, select, textarea, summary):focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+.ast .ast-frame {
+  inline-size: calc(100% - 2 * var(--ast-frame-margin));
+  max-inline-size: var(--ast-foundation-layout-frame-max);
+  margin-inline: auto;
+  min-inline-size: 0;
+}
+/* Reuse this start edge across sections; do not indent each panel arbitrarily. */
+.ast .ast-rail { border-inline-start: 1px solid currentColor; padding-inline-start: var(--ast-semantic-space-group); }
+.ast .ast-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--ast-grid-columns), minmax(0, 1fr));
+  gap: var(--ast-grid-gutter);
+}
+.ast .ast-grid > *, .ast .ast-record > *, .ast .ast-metrics > * { min-width: 0; min-inline-size: 0; }
+.ast .ast-dossier > .ast-feature { grid-column: span var(--ast-feature-span); }
+.ast .ast-dossier > .ast-context { grid-column: span var(--ast-context-span); }
+.ast .ast-stack > * + * { margin-block-start: var(--ast-semantic-space-group); }
+.ast .ast-cluster { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--ast-semantic-space-intra) var(--ast-semantic-space-group); }
+.ast .ast-section { padding-block: var(--ast-section-space); }
+.ast .ast-type-display {
+  font-family: var(--ast-display-font-family);
+  font-size: var(--ast-display-font-size);
+  font-weight: var(--ast-display-font-weight);
+  line-height: var(--ast-display-line-height);
+  letter-spacing: var(--ast-display-letter-spacing);
+}
+.ast .ast-document { max-inline-size: var(--ast-document-measure); min-inline-size: 0; }
+.ast .ast-document > * + * { margin-block-start: var(--ast-semantic-document-paragraph); }
+.ast .ast-document > :where(h2, h3) { margin-block-start: var(--ast-semantic-document-section); }
+.ast .ast-document :where(ul, ol) { padding-inline-start: var(--ast-semantic-space-group); }
+.ast .ast-document li + li { margin-block-start: var(--ast-semantic-document-list-gap); }
+/* Label/date/title order stays the same when each record becomes a vertical group. */
+.ast .ast-index { list-style: none; padding: 0; }
+.ast .ast-record {
+  display: grid;
+  grid-template-columns: var(--ast-record-columns);
+  gap: var(--ast-semantic-space-intra) var(--ast-grid-gutter);
+  padding-block: var(--ast-density-row-padding);
+  border-block-start: 1px solid currentColor;
+  align-items: baseline;
+}
+.ast .ast-record time, .ast .ast-data { font-variant-numeric: tabular-nums lining-nums; }
+.ast .ast-metrics { margin: 0; }
+.ast .ast-metrics > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: baseline;
+  gap: var(--ast-density-gap);
+  padding-block: var(--ast-density-row-padding);
+  border-block-start: 1px solid currentColor;
+}
+.ast .ast-metrics dd { text-align: end; font-variant-numeric: tabular-nums lining-nums; }
+.ast .ast-density-comfortable {
+  --ast-density-inset: var(--ast-semantic-density-comfortable-inset);
+  --ast-density-row-padding: var(--ast-semantic-density-comfortable-row-padding);
+  --ast-density-gap: var(--ast-semantic-density-comfortable-gap);
+}
+.ast .ast-density-compact {
+  --ast-density-inset: var(--ast-semantic-density-compact-inset);
+  --ast-density-row-padding: var(--ast-semantic-density-compact-row-padding);
+  --ast-density-gap: var(--ast-semantic-density-compact-gap);
+}
+.ast .ast-density-region { padding: var(--ast-density-inset); }
+.ast .ast-control, .ast summary {
+  min-inline-size: var(--ast-foundation-layout-target-min);
+  min-block-size: var(--ast-foundation-layout-target-min);
+  padding: var(--ast-semantic-control-padding-block) var(--ast-semantic-control-padding-inline);
+  cursor: pointer;
+}
+.ast .ast-control { display: inline-flex; align-items: center; justify-content: center; gap: var(--ast-semantic-control-gap); }
+/* Optional short Latin identifiers only. Do not apply to body text or CJK. */
+.ast .ast-latin-label { letter-spacing: var(--ast-foundation-tracking-latin-label); }

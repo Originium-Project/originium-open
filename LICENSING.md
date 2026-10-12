@@ -1,5 +1,13 @@
 # Licensing
 
+## Token Flow demo addition
+
+The user separately authorized the curated [Token Flow demo](projects/token-flow-demo/README.md) addition on 2026-10-12 under MIT for project-owned code and documentation, copyright (c) 2026 Originium Project contributors. Its [LICENSE](projects/token-flow-demo/LICENSE) is an exact copy of the root MIT notice, and `package.json` declares `MIT`. There are no package dependencies or bundled dependency binaries.
+
+The `vendor/structural` name denotes retained project-authored dimensional defaults and CSS recipes, not third-party branded assets or official game specifications. No game artwork, logos or custom fonts are included. Provider names are illustrative labels; all usage records, rates and capacity values are invented, not provider pricing or account data. [Source provenance](projects/token-flow-demo/SOURCE.md) and a separate [component inventory](projects/token-flow-demo/component-manifest.json) record this addition. The unchanged Research MCP release manifest and historical approvals do not cover it or the new root catalog/licensing text; independent parent review and secret scanning remain required before publication.
+
+## Historical Research MCP release
+
 On 2026-10-10 the user declared the copyright name **Originium Project contributors**, ownership of the original code, and authority to release it under MIT. The [root LICENSE](LICENSE) and [component LICENSE](projects/research-mcp/LICENSE) grant MIT for project-original software and associated documentation, copyright (c) 2026 Originium Project contributors. Component metadata declares the SPDX expression `MIT` and the license file using PEP 639.
 
 The user authorized publication of the reviewed Research MCP component to `Originium-Project/originium-open`. This grant does not establish rights over third-party material; release approvals are recorded separately in the [manifest](release-manifest.json). MIT does not cover provider fixture data, dependency code or full papers. Preserve applicable upstream terms and notices.

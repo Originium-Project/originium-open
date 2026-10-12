@@ -1,0 +1,495 @@
+{
+  "$description": "Structural Tokens 0.1.0. Unofficial, authored web adaptation. Every numeric value is a proposed default, never a source measurement.",
+  "foundation": {
+    "space": {
+      "4": {
+        "$type": "dimension",
+        "$value": {
+          "value": 0.25,
+          "unit": "rem"
+        },
+        "$description": "4px equivalent at a 16px root; spacing building block. Proposed adaptation; not extracted studio specifications."
+      },
+      "8": {
+        "$type": "dimension",
+        "$value": {
+          "value": 0.5,
+          "unit": "rem"
+        },
+        "$description": "8px equivalent at a 16px root; spacing building block. Proposed adaptation; not extracted studio specifications."
+      },
+      "12": {
+        "$type": "dimension",
+        "$value": {
+          "value": 0.75,
+          "unit": "rem"
+        },
+        "$description": "12px equivalent at a 16px root; spacing building block. Proposed adaptation; not extracted studio specifications."
+      },
+      "16": {
+        "$type": "dimension",
+        "$value": {
+          "value": 1.0,
+          "unit": "rem"
+        },
+        "$description": "16px equivalent at a 16px root; spacing building block. Proposed adaptation; not extracted studio specifications."
+      },
+      "24": {
+        "$type": "dimension",
+        "$value": {
+          "value": 1.5,
+          "unit": "rem"
+        },
+        "$description": "24px equivalent at a 16px root; spacing building block. Proposed adaptation; not extracted studio specifications."
+      },
+      "32": {
+        "$type": "dimension",
+        "$value": {
+          "value": 2.0,
+          "unit": "rem"
+        },
+        "$description": "32px equivalent at a 16px root; spacing building block. Proposed adaptation; not extracted studio specifications."
+      },
+      "48": {
+        "$type": "dimension",
+        "$value": {
+          "value": 3.0,
+          "unit": "rem"
+        },
+        "$description": "48px equivalent at a 16px root; spacing building block. Proposed adaptation; not extracted studio specifications."
+      },
+      "64": {
+        "$type": "dimension",
+        "$value": {
+          "value": 4.0,
+          "unit": "rem"
+        },
+        "$description": "64px equivalent at a 16px root; spacing building block. Proposed adaptation; not extracted studio specifications."
+      },
+      "96": {
+        "$type": "dimension",
+        "$value": {
+          "value": 6.0,
+          "unit": "rem"
+        },
+        "$description": "96px equivalent at a 16px root; spacing building block. Proposed adaptation; not extracted studio specifications."
+      }
+    },
+    "fontFamily": {
+      "system": {
+        "$type": "fontFamily",
+        "$value": [
+          "system-ui",
+          "sans-serif"
+        ],
+        "$description": "Host-platform Latin/CJK fallback; identity is independent of type role. Proposed adaptation; not extracted studio specifications."
+      }
+    },
+    "fontSize": {
+      "metadata": {
+        "$type": "dimension",
+        "$value": {
+          "value": 0.8125,
+          "unit": "rem"
+        },
+        "$description": "Secondary but readable dates and categories. Proposed adaptation; not extracted studio specifications."
+      },
+      "support": {
+        "$type": "dimension",
+        "$value": {
+          "value": 0.875,
+          "unit": "rem"
+        },
+        "$description": "Supporting explanation and labels. Proposed adaptation; not extracted studio specifications."
+      },
+      "body": {
+        "$type": "dimension",
+        "$value": {
+          "value": 1,
+          "unit": "rem"
+        },
+        "$description": "Continuous reading baseline. Proposed adaptation; not extracted studio specifications."
+      },
+      "section": {
+        "$type": "dimension",
+        "$value": {
+          "value": 1.5,
+          "unit": "rem"
+        },
+        "$description": "Section-level navigation through content. Proposed adaptation; not extracted studio specifications."
+      },
+      "title": {
+        "$type": "dimension",
+        "$value": {
+          "value": 2,
+          "unit": "rem"
+        },
+        "$description": "Document or task heading. Proposed adaptation; not extracted studio specifications."
+      },
+      "displayCompact": {
+        "$type": "dimension",
+        "$value": {
+          "value": 2.25,
+          "unit": "rem"
+        },
+        "$description": "Single focal heading on a narrow composition. Proposed adaptation; not extracted studio specifications."
+      },
+      "displayWide": {
+        "$type": "dimension",
+        "$value": {
+          "value": 3.5,
+          "unit": "rem"
+        },
+        "$description": "Maximum proposed wide focal heading; recipe changes at the wide breakpoint. Proposed adaptation; not extracted studio specifications."
+      }
+    },
+    "lineHeight": {
+      "body": {
+        "$type": "number",
+        "$value": 1.5,
+        "$description": "Unitless line-height multiplier for body text. Proposed adaptation; not extracted studio specifications."
+      },
+      "support": {
+        "$type": "number",
+        "$value": 1.4,
+        "$description": "Unitless line-height multiplier for support text. Proposed adaptation; not extracted studio specifications."
+      },
+      "section": {
+        "$type": "number",
+        "$value": 1.333,
+        "$description": "Unitless line-height multiplier for section text. Proposed adaptation; not extracted studio specifications."
+      },
+      "heading": {
+        "$type": "number",
+        "$value": 1.2,
+        "$description": "Unitless line-height multiplier for heading text. Proposed adaptation; not extracted studio specifications."
+      },
+      "display": {
+        "$type": "number",
+        "$value": 1.1,
+        "$description": "Unitless line-height multiplier for display text. Proposed adaptation; not extracted studio specifications."
+      }
+    },
+    "fontWeight": {
+      "regular": {
+        "$type": "fontWeight",
+        "$value": 400,
+        "$description": "Regular emphasis without a second font family. Proposed adaptation; not extracted studio specifications."
+      },
+      "medium": {
+        "$type": "fontWeight",
+        "$value": 500,
+        "$description": "Medium emphasis without a second font family. Proposed adaptation; not extracted studio specifications."
+      },
+      "semibold": {
+        "$type": "fontWeight",
+        "$value": 600,
+        "$description": "Semibold emphasis without a second font family. Proposed adaptation; not extracted studio specifications."
+      }
+    },
+    "tracking": {
+      "normal": {
+        "$type": "dimension",
+        "$value": {
+          "value": 0,
+          "unit": "rem"
+        },
+        "$description": "Default tracking, including CJK. Proposed adaptation; not extracted studio specifications."
+      },
+      "latinLabel": {
+        "$type": "dimension",
+        "$value": {
+          "value": 0.015625,
+          "unit": "rem"
+        },
+        "$description": "Optional short Latin-label tracking; never forced on CJK or paragraphs. Proposed adaptation; not extracted studio specifications."
+      }
+    },
+    "layout": {
+      "breakpointMedium": {
+        "$type": "dimension",
+        "$value": {
+          "value": 48,
+          "unit": "rem"
+        },
+        "$description": "Recompose into eight columns when room permits. Proposed adaptation; not extracted studio specifications."
+      },
+      "breakpointWide": {
+        "$type": "dimension",
+        "$value": {
+          "value": 72,
+          "unit": "rem"
+        },
+        "$description": "Recompose into twelve columns and wider focal type. Proposed adaptation; not extracted studio specifications."
+      },
+      "columnsSmall": {
+        "$type": "number",
+        "$value": 4,
+        "$description": "Narrow grid column count; integer CSS adapter. Proposed adaptation; not extracted studio specifications."
+      },
+      "columnsMedium": {
+        "$type": "number",
+        "$value": 8,
+        "$description": "Medium grid column count; integer CSS adapter. Proposed adaptation; not extracted studio specifications."
+      },
+      "columnsWide": {
+        "$type": "number",
+        "$value": 12,
+        "$description": "Wide grid column count; integer CSS adapter. Proposed adaptation; not extracted studio specifications."
+      },
+      "frameMax": {
+        "$type": "dimension",
+        "$value": {
+          "value": 80,
+          "unit": "rem"
+        },
+        "$description": "Content frame maximum; outer margins remain outside this width. Proposed adaptation; not extracted studio specifications."
+      },
+      "measure": {
+        "$type": "number",
+        "$value": 65,
+        "$description": "Approximate Latin reading measure. CSS adapter explicitly appends ch; review CJK line length separately. Proposed adaptation; not extracted studio specifications."
+      },
+      "targetMin": {
+        "$type": "dimension",
+        "$value": {
+          "value": 2.75,
+          "unit": "rem"
+        },
+        "$description": "44px at 16px root: comfort policy, not WCAG AA target-size minimum. Proposed adaptation; not extracted studio specifications."
+      }
+    }
+  },
+  "semantic": {
+    "space": {
+      "intra": {
+        "$type": "dimension",
+        "$value": "{foundation.space.8}",
+        "$description": "Within a closely related group. Proposed adaptation; not extracted studio specifications."
+      },
+      "item": {
+        "$type": "dimension",
+        "$value": "{foundation.space.12}",
+        "$description": "Between repeated text items. Proposed adaptation; not extracted studio specifications."
+      },
+      "group": {
+        "$type": "dimension",
+        "$value": "{foundation.space.24}",
+        "$description": "Between separate groups; greater than intra spacing. Proposed adaptation; not extracted studio specifications."
+      },
+      "sectionCompact": {
+        "$type": "dimension",
+        "$value": "{foundation.space.48}",
+        "$description": "Narrow section rhythm; greater than group spacing. Proposed adaptation; not extracted studio specifications."
+      },
+      "section": {
+        "$type": "dimension",
+        "$value": "{foundation.space.64}",
+        "$description": "Wide section rhythm. Proposed adaptation; not extracted studio specifications."
+      },
+      "hero": {
+        "$type": "dimension",
+        "$value": "{foundation.space.96}",
+        "$description": "Optional open zone for a dominant composition; use sparingly. Proposed adaptation; not extracted studio specifications."
+      }
+    },
+    "layout": {
+      "marginSmall": {
+        "$type": "dimension",
+        "$value": "{foundation.space.16}",
+        "$description": "Narrow outer rail. Proposed adaptation; not extracted studio specifications."
+      },
+      "marginMedium": {
+        "$type": "dimension",
+        "$value": "{foundation.space.24}",
+        "$description": "Medium outer rail. Proposed adaptation; not extracted studio specifications."
+      },
+      "marginWide": {
+        "$type": "dimension",
+        "$value": "{foundation.space.32}",
+        "$description": "Wide outer rail. Proposed adaptation; not extracted studio specifications."
+      },
+      "gutterSmall": {
+        "$type": "dimension",
+        "$value": "{foundation.space.16}",
+        "$description": "Narrow grid gutter. Proposed adaptation; not extracted studio specifications."
+      },
+      "gutterWide": {
+        "$type": "dimension",
+        "$value": "{foundation.space.24}",
+        "$description": "Medium and wide grid gutter. Proposed adaptation; not extracted studio specifications."
+      }
+    },
+    "density": {
+      "comfortable": {
+        "inset": {
+          "$type": "dimension",
+          "$value": "{foundation.space.24}",
+          "$description": "comfortable inset; only spacing changes, never essential text or hit size. Proposed adaptation; not extracted studio specifications."
+        },
+        "rowPadding": {
+          "$type": "dimension",
+          "$value": "{foundation.space.16}",
+          "$description": "comfortable rowPadding; only spacing changes, never essential text or hit size. Proposed adaptation; not extracted studio specifications."
+        },
+        "gap": {
+          "$type": "dimension",
+          "$value": "{foundation.space.16}",
+          "$description": "comfortable gap; only spacing changes, never essential text or hit size. Proposed adaptation; not extracted studio specifications."
+        }
+      },
+      "compact": {
+        "inset": {
+          "$type": "dimension",
+          "$value": "{foundation.space.16}",
+          "$description": "compact inset; only spacing changes, never essential text or hit size. Proposed adaptation; not extracted studio specifications."
+        },
+        "rowPadding": {
+          "$type": "dimension",
+          "$value": "{foundation.space.8}",
+          "$description": "compact rowPadding; only spacing changes, never essential text or hit size. Proposed adaptation; not extracted studio specifications."
+        },
+        "gap": {
+          "$type": "dimension",
+          "$value": "{foundation.space.8}",
+          "$description": "compact gap; only spacing changes, never essential text or hit size. Proposed adaptation; not extracted studio specifications."
+        }
+      }
+    },
+    "control": {
+      "paddingInline": {
+        "$type": "dimension",
+        "$value": "{foundation.space.16}",
+        "$description": "Control paddingInline; preserve target minimum separately. Proposed adaptation; not extracted studio specifications."
+      },
+      "paddingBlock": {
+        "$type": "dimension",
+        "$value": "{foundation.space.8}",
+        "$description": "Control paddingBlock; preserve target minimum separately. Proposed adaptation; not extracted studio specifications."
+      },
+      "gap": {
+        "$type": "dimension",
+        "$value": "{foundation.space.8}",
+        "$description": "Control gap; preserve target minimum separately. Proposed adaptation; not extracted studio specifications."
+      }
+    },
+    "document": {
+      "paragraph": {
+        "$type": "dimension",
+        "$value": "{foundation.space.16}",
+        "$description": "Reading flow paragraph. Proposed adaptation; not extracted studio specifications."
+      },
+      "listGap": {
+        "$type": "dimension",
+        "$value": "{foundation.space.8}",
+        "$description": "Reading flow listGap. Proposed adaptation; not extracted studio specifications."
+      },
+      "section": {
+        "$type": "dimension",
+        "$value": "{foundation.space.32}",
+        "$description": "Reading flow section. Proposed adaptation; not extracted studio specifications."
+      }
+    },
+    "type": {
+      "body": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{foundation.fontFamily.system}",
+          "fontSize": "{foundation.fontSize.body}",
+          "fontWeight": "{foundation.fontWeight.regular}",
+          "letterSpacing": "{foundation.tracking.normal}",
+          "lineHeight": "{foundation.lineHeight.body}"
+        },
+        "$description": "body semantic role; apply tabular numerals separately for data. No forced uppercase. Proposed adaptation; not extracted studio specifications."
+      },
+      "support": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{foundation.fontFamily.system}",
+          "fontSize": "{foundation.fontSize.support}",
+          "fontWeight": "{foundation.fontWeight.regular}",
+          "letterSpacing": "{foundation.tracking.normal}",
+          "lineHeight": "{foundation.lineHeight.support}"
+        },
+        "$description": "support semantic role; apply tabular numerals separately for data. No forced uppercase. Proposed adaptation; not extracted studio specifications."
+      },
+      "metadata": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{foundation.fontFamily.system}",
+          "fontSize": "{foundation.fontSize.metadata}",
+          "fontWeight": "{foundation.fontWeight.regular}",
+          "letterSpacing": "{foundation.tracking.normal}",
+          "lineHeight": "{foundation.lineHeight.support}"
+        },
+        "$description": "metadata semantic role; apply tabular numerals separately for data. No forced uppercase. Proposed adaptation; not extracted studio specifications."
+      },
+      "label": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{foundation.fontFamily.system}",
+          "fontSize": "{foundation.fontSize.support}",
+          "fontWeight": "{foundation.fontWeight.medium}",
+          "letterSpacing": "{foundation.tracking.normal}",
+          "lineHeight": "{foundation.lineHeight.support}"
+        },
+        "$description": "label semantic role; apply tabular numerals separately for data. No forced uppercase. Proposed adaptation; not extracted studio specifications."
+      },
+      "data": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{foundation.fontFamily.system}",
+          "fontSize": "{foundation.fontSize.body}",
+          "fontWeight": "{foundation.fontWeight.medium}",
+          "letterSpacing": "{foundation.tracking.normal}",
+          "lineHeight": "{foundation.lineHeight.body}"
+        },
+        "$description": "data semantic role; apply tabular numerals separately for data. No forced uppercase. Proposed adaptation; not extracted studio specifications."
+      },
+      "section": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{foundation.fontFamily.system}",
+          "fontSize": "{foundation.fontSize.section}",
+          "fontWeight": "{foundation.fontWeight.semibold}",
+          "letterSpacing": "{foundation.tracking.normal}",
+          "lineHeight": "{foundation.lineHeight.section}"
+        },
+        "$description": "section semantic role; apply tabular numerals separately for data. No forced uppercase. Proposed adaptation; not extracted studio specifications."
+      },
+      "title": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{foundation.fontFamily.system}",
+          "fontSize": "{foundation.fontSize.title}",
+          "fontWeight": "{foundation.fontWeight.semibold}",
+          "letterSpacing": "{foundation.tracking.normal}",
+          "lineHeight": "{foundation.lineHeight.heading}"
+        },
+        "$description": "title semantic role; apply tabular numerals separately for data. No forced uppercase. Proposed adaptation; not extracted studio specifications."
+      },
+      "displayCompact": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{foundation.fontFamily.system}",
+          "fontSize": "{foundation.fontSize.displayCompact}",
+          "fontWeight": "{foundation.fontWeight.semibold}",
+          "letterSpacing": "{foundation.tracking.normal}",
+          "lineHeight": "{foundation.lineHeight.display}"
+        },
+        "$description": "displayCompact semantic role; apply tabular numerals separately for data. No forced uppercase. Proposed adaptation; not extracted studio specifications."
+      },
+      "displayWide": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{foundation.fontFamily.system}",
+          "fontSize": "{foundation.fontSize.displayWide}",
+          "fontWeight": "{foundation.fontWeight.semibold}",
+          "letterSpacing": "{foundation.tracking.normal}",
+          "lineHeight": "{foundation.lineHeight.display}"
+        },
+        "$description": "displayWide semantic role; apply tabular numerals separately for data. No forced uppercase. Proposed adaptation; not extracted studio specifications."
+      }
+    }
+  }
+}
