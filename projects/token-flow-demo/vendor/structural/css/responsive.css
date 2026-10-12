@@ -1,0 +1,49 @@
+/* Generated responsive adapter. Thresholds and column counts come from JSON; do not edit. */
+/* ch is a CSS recipe policy, never a DTCG dimension unit. */
+.ast {
+  --ast-grid-columns: var(--ast-foundation-layout-columns-small);
+  --ast-frame-margin: var(--ast-semantic-layout-margin-small);
+  --ast-grid-gutter: var(--ast-semantic-layout-gutter-small);
+  --ast-section-space: var(--ast-semantic-space-section-compact);
+  --ast-feature-span: 4;
+  --ast-context-span: 4;
+  --ast-record-columns: minmax(0, 1fr);
+  --ast-display-font-family: var(--ast-semantic-type-display-compact-font-family);
+  --ast-display-font-size: var(--ast-semantic-type-display-compact-font-size);
+  --ast-display-font-weight: var(--ast-semantic-type-display-compact-font-weight);
+  --ast-display-letter-spacing: var(--ast-semantic-type-display-compact-letter-spacing);
+  --ast-display-line-height: var(--ast-semantic-type-display-compact-line-height);
+  --ast-document-measure: 65ch;
+}
+@media (min-width: 48rem) {
+  .ast {
+    --ast-grid-columns: var(--ast-foundation-layout-columns-medium);
+    --ast-frame-margin: var(--ast-semantic-layout-margin-medium);
+    --ast-grid-gutter: var(--ast-semantic-layout-gutter-wide);
+    --ast-section-space: var(--ast-semantic-space-section-compact);
+    --ast-feature-span: 5;
+    --ast-context-span: 3;
+    --ast-record-columns: minmax(0, 6rem) minmax(0, 7rem) minmax(0, 1fr);
+    --ast-display-font-family: var(--ast-semantic-type-display-compact-font-family);
+    --ast-display-font-size: var(--ast-semantic-type-display-compact-font-size);
+    --ast-display-font-weight: var(--ast-semantic-type-display-compact-font-weight);
+    --ast-display-letter-spacing: var(--ast-semantic-type-display-compact-letter-spacing);
+    --ast-display-line-height: var(--ast-semantic-type-display-compact-line-height);
+  }
+}
+@media (min-width: 72rem) {
+  .ast {
+    --ast-grid-columns: var(--ast-foundation-layout-columns-wide);
+    --ast-frame-margin: var(--ast-semantic-layout-margin-wide);
+    --ast-grid-gutter: var(--ast-semantic-layout-gutter-wide);
+    --ast-section-space: var(--ast-semantic-space-section);
+    --ast-feature-span: 8;
+    --ast-context-span: 4;
+    --ast-record-columns: minmax(0, 6rem) minmax(0, 7rem) minmax(0, 1fr);
+    --ast-display-font-family: var(--ast-semantic-type-display-wide-font-family);
+    --ast-display-font-size: var(--ast-semantic-type-display-wide-font-size);
+    --ast-display-font-weight: var(--ast-semantic-type-display-wide-font-weight);
+    --ast-display-letter-spacing: var(--ast-semantic-type-display-wide-letter-spacing);
+    --ast-display-line-height: var(--ast-semantic-type-display-wide-line-height);
+  }
+}

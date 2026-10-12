@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" class="ast" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>Token Flow — Rectilinear study</title>
+  <link rel="stylesheet" href="vendor/structural/css/tokens.css">
+  <link rel="stylesheet" href="vendor/structural/css/responsive.css">
+  <link rel="stylesheet" href="vendor/structural/css/recipes.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <noscript><style>#app-status { display: none; }</style></noscript>
+  <script defer src="data.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body class="ast-density-comfortable">
+  <a class="skip-link ast-control" href="#main">Skip to overview</a>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Study navigation">
+      <a href="#overview" class="brand"><span class="brand-mark" aria-hidden="true">TF</span><span>Token Flow<span class="brand-caption ast-type-metadata">RECTILINEAR / 01</span></span></a>
+      <nav aria-label="Sections">
+        <a href="#overview"><span class="nav-index" aria-hidden="true">01</span> Overview</a>
+        <a href="#usage"><span class="nav-index" aria-hidden="true">02</span> Usage</a>
+        <a href="#capacity"><span class="nav-index" aria-hidden="true">03</span> Capacity</a>
+        <a href="#activity"><span class="nav-index" aria-hidden="true">04</span> Activity</a>
+        <a href="#design-tokens" id="tokens-link"><span class="nav-index" aria-hidden="true">05</span> Design tokens</a>
+      </nav>
+      <div class="rail-note ast-type-metadata"><span class="sample-tag">SYNTHETIC DATA</span><p>A local interface study.<br>No connected services.</p><p>Snapshot<br><time datetime="2026-09-29">29 September 2026</time></p></div>
+    </aside>
+
+    <main id="main" tabindex="-1">
+      <header id="overview" class="page-header">
+        <div class="eyebrow ast-type-metadata">WORKSPACE ANALYTICS <span aria-hidden="true">/</span> SYNTHETIC DATA</div>
+        <div class="header-line">
+          <div><h1 class="ast-type-title">Overview</h1><p class="muted">A clear view of the work behind the tokens.</p></div>
+          <div class="preferences" aria-label="Display preferences">
+            <button class="ast-control" id="theme-toggle" type="button" aria-pressed="false" disabled>Light mode</button>
+            <button class="ast-control" id="density-toggle" type="button" aria-pressed="false" disabled>Compact spacing</button>
+          </div>
+        </div>
+        <div class="period-row">
+          <p id="period" class="ast-type-support">Fixed sample ending 29 September 2026 · UTC</p>
+          <div class="range-control"><label for="range" class="ast-type-label">Period</label><select id="range" disabled><option value="7">Last 7 days</option><option value="14" selected>Last 14 days</option><option value="30">Last 30 days</option></select></div>
+        </div>
+      </header>
+
+      <noscript><div class="notice">This offline study uses JavaScript to calculate synthetic token usage. Enable JavaScript and reopen this file to explore the 7, 14 and 30-day views. The illustrative capacity snapshot and design notes below remain available.</div></noscript>
+      <p id="app-status" class="notice" role="status" aria-live="polite">Preparing the local sample. If this message remains, check that data.js and app.js are beside index.html.</p>
+      <dl class="metrics ast-data" aria-label="Selected period totals">
+        <div><dt class="ast-type-label">Total tokens</dt><dd id="total-tokens">—</dd><dd id="tokens-note" class="metric-note muted">Input + cache + output</dd></div>
+        <div><dt class="ast-type-label">API spend <span class="muted">/ USD</span></dt><dd id="total-cost">—</dd><dd class="metric-note muted">Illustrative metered cost</dd></div>
+        <div><dt class="ast-type-label">Cache hit rate</dt><dd id="cache-rate">—</dd><dd class="metric-note muted">Cached / all input tokens</dd></div>
+        <div><dt class="ast-type-label">Completed tasks</dt><dd id="task-count">—</dd><dd id="tasks-note" class="metric-note muted">Across three sample providers</dd></div>
+      </dl>
+
+      <div class="lead-grid ast-grid ast-dossier">
+        <section id="usage" class="usage ast-feature" aria-labelledby="usage-title">
+          <div class="section-heading"><div><p class="eyebrow ast-type-metadata">01 / CONSUMPTION</p><h2 id="usage-title" class="ast-type-section">Daily token usage</h2></div><div class="chart-unit ast-type-metadata"><span class="legend-swatch" aria-hidden="true"></span>Total tokens</div></div>
+          <figure aria-labelledby="usage-title chart-summary">
+            <div class="chart-top"><p class="ast-type-support muted">Tokens per day</p><p class="ast-type-support ast-data" id="daily-average">Daily average —</p></div>
+            <div class="chart" id="chart" aria-hidden="true">
+              <div class="y-axis ast-type-metadata ast-data"><span id="axis-top">—</span><span id="axis-middle">—</span><span>0</span></div>
+              <div class="plot"><div class="grid-line grid-top"></div><div class="grid-line grid-middle"></div><div class="grid-line grid-bottom"></div><div id="bars" class="bars"></div></div>
+              <div class="x-axis ast-type-metadata" id="chart-dates"><span>Selected range</span><span>29 Sep</span></div>
+            </div>
+            <figcaption id="chart-summary" class="ast-type-support muted">Daily totals are calculated from the local synthetic task records. Exact values are available below.</figcaption>
+          </figure>
+          <details class="data-disclosure" id="daily-disclosure"><summary>View daily chart data</summary><div id="daily-data"><p class="empty-state">Daily data will appear when the sample is ready.</p></div></details>
+          <div class="composition" aria-labelledby="composition-title">
+            <div class="section-heading small-heading"><h3 id="composition-title" class="ast-type-label">Token composition</h3><p class="ast-type-metadata muted">Of selected total</p></div>
+            <div class="composition-track" id="composition-track" aria-hidden="true"></div>
+            <dl class="composition-values ast-data" id="composition-values"><div><dt>Uncached input</dt><dd>—</dd></div><div><dt>Cached input</dt><dd>—</dd></div><div><dt>Output</dt><dd>—</dd></div></dl>
+          </div>
+        </section>
+
+        <section id="capacity" class="capacity ast-context ast-density-region" aria-labelledby="capacity-title">
+          <p class="eyebrow ast-type-metadata">02 / HEADROOM</p><h2 id="capacity-title" class="ast-type-section">Capacity</h2>
+          <p class="ast-type-support muted capacity-intro">Illustrative current snapshot.<br>Independent of the period filter.</p>
+          <div class="capacity-row"><div class="capacity-name"><h3 class="ast-type-data">OpenAI</h3><span class="ast-type-support ast-data">62% used</span></div><p class="ast-type-metadata muted">5-hour window · Within limit</p><meter min="0" max="100" value="62" aria-label="OpenAI illustrative capacity, 62 percent used">62%</meter><p class="ast-type-metadata muted">Resets 29 Sep, 18:00 UTC</p></div>
+          <div class="capacity-row"><div class="capacity-name"><h3 class="ast-type-data">Anthropic</h3><span class="ast-type-support ast-data">84% used</span></div><p class="ast-type-metadata muted">5-hour window · Near limit</p><meter min="0" max="100" value="84" aria-label="Anthropic illustrative capacity, 84 percent used">84%</meter><p class="ast-type-metadata muted">Resets 29 Sep, 19:30 UTC</p></div>
+          <div class="capacity-row"><div class="capacity-name"><h3 class="ast-type-data">Google</h3><span class="ast-type-support ast-data">28% used</span></div><p class="ast-type-metadata muted">24-hour window · Within limit</p><meter min="0" max="100" value="28" aria-label="Google illustrative capacity, 28 percent used">28%</meter><p class="ast-type-metadata muted">Resets 30 Sep, 00:00 UTC</p></div>
+          <p class="capacity-footnote ast-type-metadata muted">Sample limits and reset times are invented for this study. No account or provider is connected.</p>
+        </section>
+      </div>
+
+      <section id="activity" class="activity" aria-labelledby="activity-title">
+        <div class="section-heading"><div><p class="eyebrow ast-type-metadata">03 / WORK LOG</p><h2 id="activity-title" class="ast-type-section">Recent activity</h2></div><p class="ast-type-support muted" id="activity-count">Latest tasks in selected period</p></div>
+        <div id="activity-data"><p class="empty-state">Synthetic task records will appear here. No prompts or private identifiers are included.</p></div>
+      </section>
+
+      <section id="design-tokens" class="design-section" aria-label="Design tokens">
+        <details id="token-disclosure"><summary>Design tokens <span class="muted ast-type-metadata">/ Structure &amp; theme</span></summary>
+          <div class="token-content">
+            <div class="ast-document"><h2 class="ast-type-section">A structural system, a local theme.</h2><p class="ast-type-support muted">Built with the actual Structural v0.1.0 tokens and recipes, snapshot commit <code>13164d4</code>. Dimensions are authored adaptations, not official Arknights or Endfield specifications. No game assets or custom fonts are used.</p><p class="ast-type-support muted">The vendor defines spacing, type, grid and control targets. This dashboard adds semantic colors, translucent surfaces and compact section spacing. Density changes spacing only; controls stay at least 44px.</p></div>
+            <dl class="token-map ast-type-support"><div><dt>Grid</dt><dd>4 / 8 / 12 columns</dd></div><div><dt>Spacing</dt><dd>4 / 8 / 12 / 16 / 24 / 32px</dd></div><div><dt>Type</dt><dd>13 metadata · 16 body · 24 section · 32 title</dd></div><div><dt>Edges</dt><dd>1px borders · 0 radius</dd></div><div><dt>Current profile</dt><dd id="profile-name">Dark · Comfortable</dd></div><div><dt>Theme</dt><dd>Neutral surfaces + one blue hue</dd></div></dl>
+          </div>
+        </details>
+      </section>
+      <footer class="ast-type-metadata muted"><span>TOKEN FLOW / RECTILINEAR STUDY</span><span>Local sample · USD · Fixed dates · No live connection</span></footer>
+    </main>
+  </div>
+</body>
+</html>

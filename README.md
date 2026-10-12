@@ -1,8 +1,15 @@
 # Originium monorepo
 
-Project-original software and documentation are licensed under [MIT](LICENSE), copyright (c) 2026 Originium Project contributors. On 2026-10-10 the user declared ownership and authority for this grant and authorized publication of this component to `Originium-Project/originium-open`. This repository contains only [Research MCP](projects/research-mcp/README.md), imported from source revision `4aefd8ae0ab6460a671a0ce774fc0abc585ce9a0`. It is a bounded stdio scholarly metadata server; unknown metadata and partial provider errors remain visible.
+Project-original software and documentation are licensed under [MIT](LICENSE), copyright (c) 2026 Originium Project contributors. On 2026-10-10 the user declared ownership and authority for this grant and authorized publication of Research MCP to `Originium-Project/originium-open`. The user separately authorized this curated Token Flow demo addition on 2026-10-12.
 
-It uses fixed API origins `https://api.openalex.org`, `https://api.crossref.org`, and `https://export.arxiv.org`. It does not offer arbitrary fetching, login, browser automation, PDF retrieval or trading. Historical fixtures and validation are recorded evidence, not current provider availability or institutional entitlement.
+| Component | Scope | Local checks |
+|---|---|---|
+| [Research MCP](projects/research-mcp/README.md) | Bounded stdio scholarly metadata server; unknown metadata and partial provider errors remain visible. Imported from revision `4aefd8ae0ab6460a671a0ce774fc0abc585ce9a0`. | Historical release runner described below. |
+| [Token Flow demo](projects/token-flow-demo/README.md) | Runnable offline UI with deterministic synthetic usage, charts and tables; open `projects/token-flow-demo/index.html` directly. | In `projects/token-flow-demo`: `npm test` and `npm run check`; Node.js 18+, no installation. |
+
+The [legacy release manifest](release-manifest.json), its approvals, guard and launcher describe only the original 44-path Research MCP release. They remain unchanged; the exact-inventory guard/launcher rejects this expanded tree. Their historical approvals do not cover the demo or these catalog edits. The demo has a separate [component inventory](projects/token-flow-demo/component-manifest.json) and [source provenance](projects/token-flow-demo/SOURCE.md). Its local tests validate synthetic calculations, asset locality and control wiring; `check` checks JavaScript syntax. These are independent checks, not a new repository publication gate. Parent review and secret scanning of the full addition remain separate.
+
+Research MCP uses fixed API origins `https://api.openalex.org`, `https://api.crossref.org`, and `https://export.arxiv.org`. It does not offer arbitrary fetching, login, browser automation, PDF retrieval or trading. Historical fixtures and validation are recorded evidence, not current provider availability or institutional entitlement.
 
 To install, start at the monorepo root:
 
@@ -15,7 +22,7 @@ python3 -m venv .venv
 
 Dependencies are not bundled. The client template's `/ABSOLUTE/PATH/TO/research-mcp` means the complete nested `projects/research-mcp` directory. Real client configuration stays private.
 
-With dependencies already installed, run `scripts/check-local.sh` from the monorepo root. Alternatively select an existing, read-only virtualenv with `RESEARCH_MCP_VENV`. The runner requires Linux Bubblewrap with bounded tmpfs support and working namespaces; it has no unsandboxed fallback. It runs the structural guard, original offline tests and root guard tests. The default runner is for manifests that do not yet record all eleven gates as approved: it requires the expected pending-approval rejection and fails if approval is already recorded. Use `--require-approved` for an approved manifest.
+For the original Research MCP-only release tree, with dependencies already installed, run `scripts/check-local.sh` from the monorepo root. The expanded tree intentionally fails its historical inventory check. Alternatively select an existing, read-only virtualenv with `RESEARCH_MCP_VENV`. The runner requires Linux Bubblewrap with bounded tmpfs support and working namespaces; it has no unsandboxed fallback. It runs the structural guard, original offline tests and root guard tests. The default runner is for manifests that do not yet record all eleven gates as approved: it requires the expected pending-approval rejection and fails if approval is already recorded. Use `--require-approved` for an approved manifest.
 
 `scripts/check-local.sh --require-approved` requires every gate and decision to be supported by evidence and the exact candidate to be committed. It has two parts:
 
