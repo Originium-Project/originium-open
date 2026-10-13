@@ -4,10 +4,10 @@ Project-original software and documentation are licensed under [MIT](LICENSE), c
 
 | Component | Scope | Local checks |
 |---|---|---|
-| [Research MCP](projects/research-mcp/README.md) | Bounded stdio scholarly metadata server; unknown metadata and partial provider errors remain visible. Imported from revision `4aefd8ae0ab6460a671a0ce774fc0abc585ce9a0`. | Historical release runner described below. |
+| [Research MCP](projects/research-mcp/README.md) | Bounded stdio scholarly metadata server; unknown metadata and partial provider errors remain visible. Imported from revision `4aefd8ae0ab6460a671a0ce774fc0abc585ce9a0`. | `scripts/check-local.sh --current-tree` from the repository root. |
 | [Token Flow demo](projects/token-flow-demo/README.md) | Runnable offline UI with deterministic synthetic usage, charts and tables; open `projects/token-flow-demo/index.html` directly. | In `projects/token-flow-demo`: `npm test` and `npm run check`; Node.js 18+, no installation. |
 
-The [legacy release manifest](release-manifest.json), its approvals, guard and launcher describe only the original 44-path Research MCP release. They remain unchanged; the exact-inventory guard/launcher rejects this expanded tree. Their historical approvals do not cover the demo or these catalog edits. The demo has a separate [component inventory](projects/token-flow-demo/component-manifest.json) and [source provenance](projects/token-flow-demo/SOURCE.md). Its local tests validate synthetic calculations, asset locality and control wiring; `check` checks JavaScript syntax. These are independent checks, not a new repository publication gate. Parent review and secret scanning of the full addition remain separate.
+The [legacy release manifest](release-manifest.json) remains an unchanged historical receipt for the original 44-path Research MCP release. The [current component catalog](component-catalog.json) scopes that inventory to Research MCP and includes the demo's separate [component inventory](projects/token-flow-demo/component-manifest.json). It pins both receipts and checks their payload hashes; new, missing or changed inventory fails. Catalog changes require review alongside any component addition. Historical approvals do not authorize additions, catalog changes or later publication. The demo's [source provenance](projects/token-flow-demo/SOURCE.md) and independent review remain separate.
 
 Research MCP uses fixed API origins `https://api.openalex.org`, `https://api.crossref.org`, and `https://export.arxiv.org`. It does not offer arbitrary fetching, login, browser automation, PDF retrieval or trading. Historical fixtures and validation are recorded evidence, not current provider availability or institutional entitlement.
 
@@ -22,7 +22,15 @@ python3 -m venv .venv
 
 Dependencies are not bundled. The client template's `/ABSOLUTE/PATH/TO/research-mcp` means the complete nested `projects/research-mcp` directory. Real client configuration stays private.
 
-For the original Research MCP-only release tree, with dependencies already installed, run `scripts/check-local.sh` from the monorepo root. The expanded tree intentionally fails its historical inventory check. Alternatively select an existing, read-only virtualenv with `RESEARCH_MCP_VENV`. The runner requires Linux Bubblewrap with bounded tmpfs support and working namespaces; it has no unsandboxed fallback. It runs the structural guard, original offline tests and root guard tests. The default runner is for manifests that do not yet record all eleven gates as approved: it requires the expected pending-approval rejection and fails if approval is already recorded. Use `--require-approved` for an approved manifest.
+For the current two-component tree, with Research MCP dependencies already installed and Node.js 18+ available, run one offline acceptance command from the repository root:
+
+```sh
+scripts/check-local.sh --current-tree
+```
+
+Select an existing, read-only virtualenv with `RESEARCH_MCP_VENV` if needed. The runner requires Linux Bubblewrap with bounded tmpfs support and working namespaces; it has no unsandboxed fallback and downloads nothing. It checks the current inventory and documentation links, runs the demo's test and JavaScript syntax commands, and runs the original Research MCP and root regression suites. Both components share the existing resource bounds and network isolation. Passing this command grants no publication authorization.
+
+The modes without `--current-tree` retain the historical release rules: `--require-approved` requires the exact original release inventory and a committed candidate; the default mode requires pending approval. These historical modes intentionally reject an expanded tree. `--current-tree` and `--require-approved` cannot be combined.
 
 `scripts/check-local.sh --require-approved` requires every gate and decision to be supported by evidence and the exact candidate to be committed. It has two parts:
 

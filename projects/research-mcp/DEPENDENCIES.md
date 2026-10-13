@@ -48,3 +48,21 @@ If a future wheel, vendor tree or binary bundles dependencies, review that packa
 | typing-inspection | 0.4.4 | MIT | LICENSE |
 | typing_extensions | 4.16.0 | PSF-2.0 | LICENSE |
 | uvicorn | 0.54.0 | BSD-3-Clause | LICENSE.md |
+
+
+## Reproducible updates
+
+`requirements.lock` is a historical 38-version snapshot without artifact hashes. Preserve it with the original release receipt; it does not provide reproducible artifact verification. No hash lock or successful fresh installation is claimed for this checkout.
+
+Existing tooling covers the required capability; a custom resolver is unnecessary:
+
+| Candidate | Fit | Decision |
+|---|---|---|
+| `pip-tools` (`pip-compile --generate-hashes`) | Produces requirements-format pins and hashes consumed by `pip --require-hashes`; fits the existing pip workflow | Preferred for the next reviewed lock update |
+| `uv pip compile --generate-hashes` | Also produces a hash-bearing requirements file; supports a future uv-based workflow | Alternative if maintainers standardize on uv; no new toolchain required now |
+
+The maintainer preparing an update must resolve and review runtime **and build/test** requirements for Python 3.11 and 3.14, retain environment markers where needed, and verify wheel availability for each supported platform. A single lock may be used only if both runtimes resolve and install it; otherwise retain explicit per-runtime locks. Record resolver version, inputs, target Python/platform, artifact hashes and license review in the new delivery receipt. Do not derive hashes from version strings or substitute installed-package metadata for wheel identity.
+
+After a separately authorized artifact acquisition, validate from a local wheelhouse with network disabled: install dependencies using `pip --no-index --find-links ... --require-hashes --only-binary=:all:`, build the project wheel with `pip wheel --no-deps --no-build-isolation --no-index`, inspect wheel contents, and install that wheel without dependency resolution into an isolated test environment. Run the same component tests in both development and export contexts on both matrix runtimes. Run an MCP SDK client against the installed `originium-research-mcp` entry point from outside the source tree with `PYTHONPATH` unset, call `provider_status`, and verify clean shutdown. The existing source stdio regression alone does not prove the wheel is installable.
+
+Artifact acquisition, dependency installation and matrix execution were not part of the offline inventory repair. Until that evidence exists, hash-locking and the complete support matrix remain open release work; the declared Python minimum and client support have not been narrowed. Update ownership and the reviewed export/backport process are in the [maintenance policy](../../docs/SOURCE-OF-TRUTH.md).
