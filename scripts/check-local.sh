@@ -3,10 +3,12 @@
 set -euo pipefail
 check_started=$SECONDS
 require_approved=false
+current_tree=false
 case "${1:-}" in
   '') [[ $# == 0 ]] || { echo 'unexpected arguments' >&2; exit 2; } ;;
+  --current-tree) [[ $# == 1 ]] || { echo 'unexpected arguments' >&2; exit 2; }; current_tree=true ;;
   --require-approved) [[ $# == 1 ]] || { echo 'unexpected arguments' >&2; exit 2; }; require_approved=true ;;
-  *) echo 'usage: scripts/check-local.sh [--require-approved]' >&2; exit 2 ;;
+  *) echo 'usage: scripts/check-local.sh [--current-tree | --require-approved]' >&2; exit 2 ;;
 esac
 root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)
 fail() { echo "check-local: NOT RUN: $*" >&2; exit 1; }
@@ -35,6 +37,16 @@ for binary in /usr/bin/bash /usr/bin/env /usr/bin/prlimit /usr/bin/git; do
   mounts+=(--ro-bind "$binary" "$binary")
 done
 mounts+=(--symlink usr/bin /bin --ro-bind "$interpreter" "$interpreter" --ro-bind "$stdlib" "$stdlib")
+if $current_tree; then
+  [[ -x /usr/bin/node ]] || fail 'current-tree checks require Node.js 18+'
+  mounts+=(--ro-bind /usr/bin/node /usr/bin/node)
+  # Some distribution builds externalize these Node builtins. Mount only these
+  # packages, never the full host JavaScript package tree or user configuration.
+  for package in acorn acorn-walk cjs-module-lexer undici; do
+    path="/usr/share/nodejs/$package"
+    [[ ! -d "$path" ]] || mounts+=(--ro-bind "$path" "$path")
+  done
+fi
 for alias in python python3; do
   [[ ! -e "$base/bin/$alias" ]] || mounts+=(--ro-bind "$interpreter" "$base/bin/$alias")
 done
@@ -383,8 +395,14 @@ check_remaining=$((120 - SECONDS + check_started))
 ((check_remaining > 0)) || fail '120-second launcher/sandbox deadline exceeded'
 # Git inventory is names only. Only an approved public projection is visible. pipefail
 # ensures Git errors fail the run, including ignored files force-added to index.
+inventory_args=(--git-dir="$inventory_git" --work-tree="$root")
+if $current_tree; then
+  # Name-only local checks also support linked worktrees; approval projection
+  # restrictions above remain unchanged.
+  inventory_args=(-C "$root")
+fi
 /usr/bin/env -i PATH=/usr/bin:/bin GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null GIT_NO_REPLACE_OBJECTS=1 GIT_OPTIONAL_LOCKS=0 \
-  /usr/bin/git --git-dir="$inventory_git" --work-tree="$root" -c core.fsmonitor=false -c core.hooksPath=/dev/null ls-files -z --cached |
+  /usr/bin/git "${inventory_args[@]}" -c core.fsmonitor=false -c core.hooksPath=/dev/null ls-files -z --cached |
   env -i PATH=/usr/bin:/bin /usr/bin/timeout --kill-after=5 "$check_remaining" "$bwrap" \
   --unshare-all --unshare-user --unshare-net --unshare-pid \
   --die-with-parent --new-session --cap-drop ALL "${mounts[@]}" \
@@ -395,12 +413,20 @@ check_remaining=$((120 - SECONDS + check_started))
   --setenv LD_LIBRARY_PATH "$base/lib" --setenv PYTHONDONTWRITEBYTECODE 1 \
   --setenv PYTEST_DISABLE_PLUGIN_AUTOLOAD 1 --setenv GIT_CONFIG_NOSYSTEM 1 \
   --setenv GIT_CONFIG_GLOBAL /dev/null --setenv GIT_NO_REPLACE_OBJECTS 1 \
-  --setenv REQUIRE_APPROVED "$require_approved" --chdir /repo --remount-ro / \
+  --setenv REQUIRE_APPROVED "$require_approved" --setenv CURRENT_TREE "$current_tree" --chdir /repo --remount-ro / \
   /usr/bin/prlimit --as=2147483648 --cpu=90 --nproc=64 --nofile=256 --fsize=16777216 \
   -- /usr/bin/bash --noprofile --norc -euo pipefail -c '
     # Bash builtin read/printf avoids exposing any additional host toolchain.
     while IFS= read -r -d "" name; do printf "%s\0" "$name"; done > /scratch/tracked
-    if [[ "$REQUIRE_APPROVED" == true ]]; then
+    if [[ "$CURRENT_TREE" == true ]]; then
+      /runtime/venv/bin/python -P scripts/check-current.py --tracked-inventory /scratch/tracked
+      cd /repo/projects/token-flow-demo
+      # Same commands as npm test/check, without npm configuration or downloads.
+      /usr/bin/node --jitless --max-old-space-size=128 tests/run.cjs
+      /usr/bin/node --jitless --max-old-space-size=128 --check data.js
+      /usr/bin/node --jitless --max-old-space-size=128 --check app.js
+      cd /repo
+    elif [[ "$REQUIRE_APPROVED" == true ]]; then
       /runtime/venv/bin/python -P scripts/check-release.py --tracked-inventory /scratch/tracked --require-approved
     else
     /runtime/venv/bin/python -P scripts/check-release.py --tracked-inventory /scratch/tracked

@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "purpose": "local-validation-only",
+  "root_paths": [
+    ".gitignore",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "LICENSING.md",
+    "README.md",
+    "SECURITY.md",
+    "component-catalog.json",
+    "docs/RELEASE-CHECKLIST.md",
+    "docs/SOURCE-OF-TRUTH.md",
+    "release-manifest.json",
+    "scripts/check-current.py",
+    "scripts/check-local.sh",
+    "scripts/check-release.py",
+    "tests/test_current_tree.py",
+    "tests/test_release_guard.py"
+  ],
+  "components": {
+    "research-mcp": {
+      "manifest": "release-manifest.json",
+      "sha256": "eb4014d35faa058684f7c5e2c6eff89b670d2d4d669cad9f76ea5c2c62275feb"
+    },
+    "token-flow-demo": {
+      "manifest": "projects/token-flow-demo/component-manifest.json",
+      "sha256": "84f1e2cc006e86a672f9d3998d2e9999d240c033ca1d8bff9606c0879d6473fa"
+    }
+  }
+}
