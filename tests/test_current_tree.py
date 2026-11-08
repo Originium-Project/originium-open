@@ -31,12 +31,13 @@ def current(tmp_path):
     return tmp_path
 
 
-def test_current_two_component_tree_passes():
+def test_current_three_component_tree_passes():
     assert checker().validate(ROOT, []) == []
 
 
 @pytest.mark.parametrize("name", ["projects/unlisted/file.txt", "projects/token-flow-demo/extra.js",
-                                  "projects/research-mcp/extra.py", "extra.txt"])
+                                  "projects/research-mcp/extra.py", "projects/visual-design-skill/extra.md",
+                                  "extra.txt"])
 def test_current_rejects_unlisted_files(current, name):
     path = current / name
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -50,6 +51,7 @@ def test_current_rejects_empty_unlisted_component(current):
 
 
 @pytest.mark.parametrize("name", ["projects/token-flow-demo/app.js",
+                                  "projects/visual-design-skill/skills/visual-design/SKILL.md",
                                   "projects/research-mcp/src/originium_research_mcp/server.py"])
 def test_current_rejects_modified_payload(current, name):
     with (current / name).open("a") as stream:
@@ -57,7 +59,8 @@ def test_current_rejects_modified_payload(current, name):
     assert any("hash mismatch" in error for error in checker().validate(current, []))
 
 
-@pytest.mark.parametrize("name", ["release-manifest.json", "projects/token-flow-demo/component-manifest.json"])
+@pytest.mark.parametrize("name", ["release-manifest.json", "projects/token-flow-demo/component-manifest.json",
+                                  "projects/visual-design-skill/component-manifest.json"])
 def test_current_rejects_modified_inventory(current, name):
     path = current / name
     manifest = json.loads(path.read_text())
@@ -66,8 +69,9 @@ def test_current_rejects_modified_inventory(current, name):
     assert any("receipt hash mismatch" in error for error in checker().validate(current, []))
 
 
-def test_current_rejects_missing_file(current):
-    (current / "projects/token-flow-demo/app.js").unlink()
+@pytest.mark.parametrize("name", ["projects/token-flow-demo/app.js", "projects/visual-design-skill/SOURCES.md"])
+def test_current_rejects_missing_file(current, name):
+    (current / name).unlink()
     assert any("missing public file" in error for error in checker().validate(current, []))
 
 

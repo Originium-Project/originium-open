@@ -13,7 +13,10 @@ SPEC.loader.exec_module(guard)
 
 # Adding a component requires both an inventory review and a runner implementation.
 COMPONENTS = {"research-mcp": "release-manifest.json",
-              "token-flow-demo": "projects/token-flow-demo/component-manifest.json"}
+              "token-flow-demo": "projects/token-flow-demo/component-manifest.json",
+              "visual-design-skill": "projects/visual-design-skill/component-manifest.json"}
+# Components whose receipt lists retained_files with exact hashes and byte counts.
+RETAINED = {"token-flow-demo": "demo", "visual-design-skill": "visual-design-skill"}
 
 
 def paths(value):
@@ -81,14 +84,15 @@ def validate(root, tracked):
                 errors.append(f"immutable hash mismatch: {name}")
         errors += guard.derived_errors(root, research, files)
         errors += guard.licensed_candidate_errors(root, research, files, allowed)
-        demo = receipts["token-flow-demo"]
-        if set(demo["retained_files"]) != paths(demo["public_paths"]) - {"component-manifest.json"}:
-            errors.append("demo retained hash inventory mismatch")
-        else:
-            for name, entry in demo["retained_files"].items():
-                raw = (root / "projects/token-flow-demo" / name).read_bytes()
+        for component, label in RETAINED.items():
+            receipt = receipts[component]
+            if set(receipt["retained_files"]) != paths(receipt["public_paths"]) - {"component-manifest.json"}:
+                errors.append(f"{label} retained hash inventory mismatch")
+                continue
+            for name, entry in receipt["retained_files"].items():
+                raw = (root / "projects" / component / name).read_bytes()
                 if hashlib.sha256(raw).hexdigest() != entry["sha256"] or len(raw) != entry["bytes"]:
-                    errors.append(f"demo hash mismatch: {name}")
+                    errors.append(f"{label} hash mismatch: {name}")
         errors += guard.doclinks(root, files)
     except (OSError, KeyError, TypeError, ValueError, AttributeError):
         errors.append("invalid or unreadable current component catalog/receipt")
