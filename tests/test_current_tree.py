@@ -95,6 +95,18 @@ def test_current_retained_list_covers_all_components():
     assert set(module.RETAINED) == set(module.COMPONENTS) - {"research-mcp"}
 
 
+@pytest.mark.parametrize("drift", ["missing", "extra"])
+def test_current_rejects_retained_list_drift(monkeypatch, drift):
+    module = checker()
+    retained = dict(module.RETAINED)
+    if drift == "missing":
+        retained.pop("visual-design-skill")
+    else:
+        retained["research-mcp"] = "research"
+    monkeypatch.setattr(module, "RETAINED", retained)
+    assert module.validate(ROOT, []) == ["retained-file checks must cover every component except research-mcp"]
+
+
 def test_current_rejects_tracked_private_name_without_read(current):
     assert any("tracked path" in error for error in checker().validate(current, [".env"]))
 
