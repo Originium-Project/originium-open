@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "component": "visual-design-skill",
+  "status": "LOCAL_ADDITION_PENDING_PARENT_REVIEW",
+  "scope": "Instruction-only visual design skill: Markdown instructions, templates and one examples file; no code, dependencies, fonts or images. Historical Research MCP and Token Flow demo approvals do not apply.",
+  "license": "MIT",
+  "copyright_owner": "Originium Project contributors",
+  "source": {
+    "name": "visual-design-skill (private instruction-only source repository)",
+    "revision": null,
+    "imported_files": {
+      "README.md": {
+        "source_sha256": "517a952087ee3b38646416a95b9ce02f9c7b823c2eb31443294a0499498b62ad",
+        "source_bytes": 3053
+      },
+      "SOURCES.md": {
+        "source_sha256": "f95f00a4e63851e00b98f325a970696490cb0d77f43bb7a3a1b11bde89bec8ad",
+        "source_bytes": 7587
+      },
+      "skills/visual-design/SKILL.md": {
+        "source_sha256": "a86ed2c2cfb799d18167ca395b6db59c8bd38c0cf515ca3f796390425f7b4f0b",
+        "source_bytes": 15867
+      },
+      "guides/media-adapters.md": {
+        "source_sha256": "473c5c6220eabfc6fd1054e471e3221256d143732213960583cf996714612b7f",
+        "source_bytes": 6486
+      },
+      "templates/design-plan.md": {
+        "source_sha256": "ccb61cd5a199c0a58bf6f6ce8e3d6fa11494b39c6943598832ed6164af9dd87f",
+        "source_bytes": 1858
+      },
+      "templates/visual-review.md": {
+        "source_sha256": "172be724cb910186fc66a1e962631109abe7ff676d1fdd60ea2f50ba56c8db59",
+        "source_bytes": 5481
+      },
+      "examples/cross-medium-briefs.md": {
+        "source_sha256": "0abfab3c744d30e4158f7ff087640b8d054976cd4bf08e4f734726164bd8f8c4",
+        "source_bytes": 4363
+      }
+    }
+  },
+  "not_imported": [
+    "VALIDATION.md",
+    "CHANGELOG.md",
+    "one product-specific example plan",
+    ".gitignore",
+    "Git history"
+  ],
+  "derivations": {
+    "README.md": "Removed the product-specific example row and prompt and the sentence that the source repository is private and unlicensed; replaced the repository-name sentence; added a License section.",
+    "skills/visual-design/SKILL.md": "Removed the final product-specific profile section and its pointers (frontmatter description, one intro sentence, one anti-pattern bullet).",
+    "guides/media-adapters.md": "Removed the final product-specific observation section.",
+    "SOURCES.md": "Removed the product-specific observation row and two product mentions."
+  },
+  "public_paths": [
+    "LICENSE",
+    "README.md",
+    "SOURCES.md",
+    "component-manifest.json",
+    "examples/cross-medium-briefs.md",
+    "guides/media-adapters.md",
+    "skills/visual-design/SKILL.md",
+    "templates/design-plan.md",
+    "templates/visual-review.md"
+  ],
+  "retained_files": {
+    "LICENSE": {
+      "sha256": "401c961f4a4faa51447f4e32a92941b2de4004fbbc959f458e6c1036faa82432",
+      "bytes": 1087
+    },
+    "README.md": {
+      "sha256": "190e7a78707f25fb68b24a39c7fc6445d1472de62c3ee4bf34dea09d8e83c559",
+      "bytes": 2748
+    },
+    "SOURCES.md": {
+      "sha256": "0194120136366a53e90b8eb2cd563185ab9cd9e16347048f2500e9bdb2c5df4b",
+      "bytes": 7005
+    },
+    "examples/cross-medium-briefs.md": {
+      "sha256": "0abfab3c744d30e4158f7ff087640b8d054976cd4bf08e4f734726164bd8f8c4",
+      "bytes": 4363
+    },
+    "guides/media-adapters.md": {
+      "sha256": "16f90df591d6f50befa0799b703e69f566cf9356bc8449021f5afe4e12f65e97",
+      "bytes": 6122
+    },
+    "skills/visual-design/SKILL.md": {
+      "sha256": "16857f0ae15a28385a001c6469462b695e836e0550d77e09c7b6388faac06b37",
+      "bytes": 13060
+    },
+    "templates/design-plan.md": {
+      "sha256": "ccb61cd5a199c0a58bf6f6ce8e3d6fa11494b39c6943598832ed6164af9dd87f",
+      "bytes": 1858
+    },
+    "templates/visual-review.md": {
+      "sha256": "172be724cb910186fc66a1e962631109abe7ff676d1fdd60ea2f50ba56c8db59",
+      "bytes": 5481
+    }
+  }
+}

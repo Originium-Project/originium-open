@@ -1,5 +1,9 @@
 # Licensing
 
+## Visual design skill addition
+
+The user authorized the [visual design skill](projects/visual-design-skill/README.md) addition on 2026-11-08 under MIT for project-original documentation, copyright (c) 2026 Originium Project contributors. Its [LICENSE](projects/visual-design-skill/LICENSE) is an exact copy of the root MIT notice. It is instruction-only Markdown: no code, dependencies, fonts, images or third-party text is bundled. [SOURCES](projects/visual-design-skill/SOURCES.md) links public references and records what was read; it quotes no book text, and MIT does not extend to those references. The [component inventory](projects/visual-design-skill/component-manifest.json) records the exact files, hashes and derivations from the private source. The root `release-manifest.json` is unchanged; its Research MCP-only approval evidence does not cover this addition.
+
 ## Token Flow demo addition
 
 The user separately authorized the curated [Token Flow demo](projects/token-flow-demo/README.md) addition on 2026-10-12 under MIT for project-owned code and documentation, copyright (c) 2026 Originium Project contributors. Its [LICENSE](projects/token-flow-demo/LICENSE) is an exact copy of the root MIT notice, and `package.json` declares `MIT`. There are no package dependencies or bundled dependency binaries.
