@@ -75,6 +75,26 @@ def test_current_rejects_missing_file(current, name):
     assert any("missing public file" in error for error in checker().validate(current, []))
 
 
+@pytest.mark.parametrize("component", ["token-flow-demo", "visual-design-skill"])
+def test_current_rejects_retained_inventory_mismatch(current, component):
+    # Re-pin the edited manifest in the catalog so only the retained-file branch can fail.
+    import hashlib
+    path = current / "projects" / component / "component-manifest.json"
+    manifest = json.loads(path.read_text())
+    manifest["retained_files"].pop(next(iter(manifest["retained_files"])))
+    path.write_text(json.dumps(manifest))
+    catalog_path = current / "component-catalog.json"
+    catalog = json.loads(catalog_path.read_text())
+    catalog["components"][component]["sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+    catalog_path.write_text(json.dumps(catalog))
+    assert any("retained hash inventory mismatch" in error for error in checker().validate(current, []))
+
+
+def test_current_retained_list_covers_all_components():
+    module = checker()
+    assert set(module.RETAINED) == set(module.COMPONENTS) - {"research-mcp"}
+
+
 def test_current_rejects_tracked_private_name_without_read(current):
     assert any("tracked path" in error for error in checker().validate(current, [".env"]))
 

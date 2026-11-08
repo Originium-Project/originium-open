@@ -40,17 +40,16 @@
     }
   },
   "not_imported": [
-    "VALIDATION.md",
-    "CHANGELOG.md",
+    "private validation and change records",
     "one product-specific example plan",
-    ".gitignore",
+    "repository ignore file",
     "Git history"
   ],
   "derivations": {
     "README.md": "Removed the product-specific example row and prompt and the sentence that the source repository is private and unlicensed; replaced the repository-name sentence; added a License section.",
     "skills/visual-design/SKILL.md": "Removed the final product-specific profile section and its pointers (frontmatter description, one intro sentence, one anti-pattern bullet).",
     "guides/media-adapters.md": "Removed the final product-specific observation section.",
-    "SOURCES.md": "Removed the product-specific observation row and two product mentions."
+    "SOURCES.md": "Removed the product-specific observation row and two product mentions, and a note on an unreachable page."
   },
   "public_paths": [
     "LICENSE",
@@ -73,8 +72,8 @@
       "bytes": 2748
     },
     "SOURCES.md": {
-      "sha256": "0194120136366a53e90b8eb2cd563185ab9cd9e16347048f2500e9bdb2c5df4b",
-      "bytes": 7005
+      "sha256": "e029858aa750bbbd62c818e986cab0bb3a05e0f30a50e22846db394612d26d4e",
+      "bytes": 6967
     },
     "examples/cross-medium-briefs.md": {
       "sha256": "0abfab3c744d30e4158f7ff087640b8d054976cd4bf08e4f734726164bd8f8c4",

@@ -33,6 +33,8 @@ def validate(root, tracked):
     root = Path(root).absolute()
     if any(p.is_symlink() for p in (root, *root.parents)):
         return ["current root and its ancestors must not be symlinks"]
+    if set(RETAINED) != set(COMPONENTS) - {"research-mcp"}:
+        return ["retained-file checks must cover every component except research-mcp"]
     files, errors = guard.inventory(root)
     if errors:
         return errors
