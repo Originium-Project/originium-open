@@ -1,14 +1,16 @@
 # Originium monorepo
 
-Project-original software and documentation are licensed under [MIT](LICENSE), copyright (c) 2026 Originium Project contributors. On 2026-10-10 the user declared ownership and authority for this grant and authorized publication of Research MCP to `Originium-Project/originium-open`. The user separately authorized this curated Token Flow demo addition on 2026-10-12 and the visual design skill addition on 2026-11-08.
+Project-original software and documentation are licensed under [MIT](LICENSE), copyright (c) 2026 Originium Project contributors. On 2026-10-10 the user declared ownership and authority for this grant and authorized publication of Research MCP to `Originium-Project/originium-open`. The user separately authorized this curated Token Flow demo addition on 2026-10-12, the visual design skill addition on 2026-11-08, and the exact-head merge and shell pitfalls additions on 2026-11-09.
 
 | Component | Scope | Local checks |
 |---|---|---|
 | [Research MCP](projects/research-mcp/README.md) | Bounded stdio scholarly metadata server; unknown metadata and partial provider errors remain visible. Imported from revision `4aefd8ae0ab6460a671a0ce774fc0abc585ce9a0`. | `scripts/check-local.sh --current-tree` from the repository root. |
 | [Token Flow demo](projects/token-flow-demo/README.md) | Runnable offline UI with deterministic synthetic usage, charts and tables; open `projects/token-flow-demo/index.html` directly. | In `projects/token-flow-demo`: `npm test` and `npm run check`; Node.js 18+, no installation. |
 | [Visual design skill](projects/visual-design-skill/README.md) | Instruction-only Markdown skill with templates for planning and reviewing visual work in reports, web interfaces, GUI apps and terminals; no code. | Inventory and hash check in `scripts/check-local.sh --current-tree`. |
+| [Exact-head merge](projects/exact-head-merge/README.md) | One Bash script that merges a pull request only if its head is the commit your tests ran on, is current with the base branch and has green checks; needs `gh` and `jq`. | `bash projects/exact-head-merge/tests/test-merge-exact-head.sh` (offline, stubbed `gh`). |
+| [Shell pitfalls](projects/shell-pitfalls/README.md) | One Markdown page with six shell traps that turn a failure into a success, each with a reproduction run on bash and zsh. | Inventory and hash check in `scripts/check-local.sh --current-tree`. |
 
-The [legacy release manifest](release-manifest.json) remains an unchanged historical receipt for the original 44-path Research MCP release. The [current component catalog](component-catalog.json) scopes that inventory to Research MCP and includes the separate component inventories of the demo ([Token Flow demo](projects/token-flow-demo/component-manifest.json)) and the [visual design skill](projects/visual-design-skill/component-manifest.json). It pins all three receipts and checks their payload hashes; new, missing or changed inventory fails. Catalog changes require review alongside any component addition. Historical approvals do not authorize additions, catalog changes or later publication. The demo's [source provenance](projects/token-flow-demo/SOURCE.md) and independent review remain separate.
+The [legacy release manifest](release-manifest.json) remains an unchanged historical receipt for the original 44-path Research MCP release. The [current component catalog](component-catalog.json) scopes that inventory to Research MCP and includes the separate component inventories of the demo ([Token Flow demo](projects/token-flow-demo/component-manifest.json)), the [visual design skill](projects/visual-design-skill/component-manifest.json), the [exact-head merge](projects/exact-head-merge/component-manifest.json) and the [shell pitfalls](projects/shell-pitfalls/component-manifest.json). It pins all five receipts and checks their payload hashes; new, missing or changed inventory fails. Catalog changes require review alongside any component addition. Historical approvals do not authorize additions, catalog changes or later publication. The demo's [source provenance](projects/token-flow-demo/SOURCE.md) and independent review remain separate.
 
 Research MCP uses fixed API origins `https://api.openalex.org`, `https://api.crossref.org`, and `https://export.arxiv.org`. It does not offer arbitrary fetching, login, browser automation, PDF retrieval or trading. Historical fixtures and validation are recorded evidence, not current provider availability or institutional entitlement.
 
@@ -23,13 +25,13 @@ python3 -m venv .venv
 
 Dependencies are not bundled. The client template's `/ABSOLUTE/PATH/TO/research-mcp` means the complete nested `projects/research-mcp` directory. Real client configuration stays private.
 
-For the current three-component tree, with Research MCP dependencies already installed and Node.js 18+ available, run one offline acceptance command from the repository root:
+For the current five-component tree, with Research MCP dependencies already installed and Node.js 18+ available, run this offline command from the repository root; it checks the inventory of all five components and runs the Research MCP and Token Flow demo suites:
 
 ```sh
 scripts/check-local.sh --current-tree
 ```
 
-Select an existing, read-only virtualenv with `RESEARCH_MCP_VENV` if needed. The runner requires Linux Bubblewrap with bounded tmpfs support and working namespaces; it has no unsandboxed fallback and downloads nothing. It checks the current inventory and documentation links, runs the demo's test and JavaScript syntax commands, and runs the original Research MCP and root regression suites. Both components share the existing resource bounds and network isolation. Passing this command grants no publication authorization.
+Select an existing, read-only virtualenv with `RESEARCH_MCP_VENV` if needed. The runner requires Linux Bubblewrap with bounded tmpfs support and working namespaces; it has no unsandboxed fallback and downloads nothing. It checks the current inventory and documentation links, runs the demo's test and JavaScript syntax commands, and runs the original Research MCP and root regression suites. The Research MCP and demo suites share the existing resource bounds and network isolation. The exact-head merge script has its own offline test, `bash projects/exact-head-merge/tests/test-merge-exact-head.sh`, which this command does not run. Passing this command grants no publication authorization.
 
 The modes without `--current-tree` retain the historical release rules: `--require-approved` requires the exact original release inventory and a committed candidate; the default mode requires pending approval. These historical modes intentionally reject an expanded tree. `--current-tree` and `--require-approved` cannot be combined.
 

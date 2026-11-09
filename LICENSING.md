@@ -1,5 +1,9 @@
 # Licensing
 
+## Exact-head merge and shell pitfalls additions
+
+On 2026-11-09 the user authorized the [exact-head merge](projects/exact-head-merge/README.md) and [shell pitfalls](projects/shell-pitfalls/README.md) additions, each under MIT for project-original code and documentation, copyright (c) 2026 Originium Project contributors. Each component's `LICENSE` is an exact copy of the root MIT notice. Both were written for this repository; no third-party code or text is bundled, and no dependencies, fonts or images are included (the script calls the installed GitHub CLI and `jq` but does not ship them). The separate component inventories ([exact-head merge](projects/exact-head-merge/component-manifest.json), [shell pitfalls](projects/shell-pitfalls/component-manifest.json)) record the exact files and hashes. The root `release-manifest.json` is unchanged; its Research MCP-only approval evidence does not cover these additions.
+
 ## Visual design skill addition
 
 The user authorized the [visual design skill](projects/visual-design-skill/README.md) addition on 2026-11-08 under MIT for project-original documentation, copyright (c) 2026 Originium Project contributors. Its [LICENSE](projects/visual-design-skill/LICENSE) is an exact copy of the root MIT notice. It is instruction-only Markdown: no code, dependencies, fonts, images or third-party text is bundled. [SOURCES](projects/visual-design-skill/SOURCES.md) links public references and records what was read; it quotes no book text, and MIT does not extend to those references. The [component inventory](projects/visual-design-skill/component-manifest.json) records the exact files, hashes and derivations from the private source. The root `release-manifest.json` is unchanged; its Research MCP-only approval evidence does not cover this addition.

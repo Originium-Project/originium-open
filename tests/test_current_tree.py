@@ -31,12 +31,13 @@ def current(tmp_path):
     return tmp_path
 
 
-def test_current_three_component_tree_passes():
+def test_current_five_component_tree_passes():
     assert checker().validate(ROOT, []) == []
 
 
 @pytest.mark.parametrize("name", ["projects/unlisted/file.txt", "projects/token-flow-demo/extra.js",
                                   "projects/research-mcp/extra.py", "projects/visual-design-skill/extra.md",
+                                  "projects/exact-head-merge/extra.sh", "projects/shell-pitfalls/extra.md",
                                   "extra.txt"])
 def test_current_rejects_unlisted_files(current, name):
     path = current / name
@@ -52,6 +53,8 @@ def test_current_rejects_empty_unlisted_component(current):
 
 @pytest.mark.parametrize("name", ["projects/token-flow-demo/app.js",
                                   "projects/visual-design-skill/skills/visual-design/SKILL.md",
+                                  "projects/exact-head-merge/merge-exact-head.sh",
+                                  "projects/shell-pitfalls/README.md",
                                   "projects/research-mcp/src/originium_research_mcp/server.py"])
 def test_current_rejects_modified_payload(current, name):
     with (current / name).open("a") as stream:
@@ -60,7 +63,9 @@ def test_current_rejects_modified_payload(current, name):
 
 
 @pytest.mark.parametrize("name", ["release-manifest.json", "projects/token-flow-demo/component-manifest.json",
-                                  "projects/visual-design-skill/component-manifest.json"])
+                                  "projects/visual-design-skill/component-manifest.json",
+                                  "projects/exact-head-merge/component-manifest.json",
+                                  "projects/shell-pitfalls/component-manifest.json"])
 def test_current_rejects_modified_inventory(current, name):
     path = current / name
     manifest = json.loads(path.read_text())
@@ -69,13 +74,15 @@ def test_current_rejects_modified_inventory(current, name):
     assert any("receipt hash mismatch" in error for error in checker().validate(current, []))
 
 
-@pytest.mark.parametrize("name", ["projects/token-flow-demo/app.js", "projects/visual-design-skill/SOURCES.md"])
+@pytest.mark.parametrize("name", ["projects/token-flow-demo/app.js", "projects/visual-design-skill/SOURCES.md",
+                                  "projects/exact-head-merge/tests/test-merge-exact-head.sh",
+                                  "projects/shell-pitfalls/README.md"])
 def test_current_rejects_missing_file(current, name):
     (current / name).unlink()
     assert any("missing public file" in error for error in checker().validate(current, []))
 
 
-@pytest.mark.parametrize("component", ["token-flow-demo", "visual-design-skill"])
+@pytest.mark.parametrize("component", ["token-flow-demo", "visual-design-skill", "exact-head-merge", "shell-pitfalls"])
 def test_current_rejects_retained_inventory_mismatch(current, component):
     # Re-pin the edited manifest in the catalog so only the retained-file branch can fail.
     import hashlib
