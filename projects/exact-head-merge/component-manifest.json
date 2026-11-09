@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "component": "exact-head-merge",
+  "status": "LOCAL_ADDITION_PENDING_PARENT_REVIEW",
+  "scope": "One Bash script (needs bash, the GitHub CLI and jq) that merges a pull request only when its head is the tested commit, plus a README and an offline test script that runs against a stub of the CLI. No dependencies, fonts or images are bundled. Historical Research MCP, Token Flow demo and visual design skill approvals do not apply.",
+  "license": "MIT",
+  "copyright_owner": "Originium Project contributors",
+  "source": {
+    "name": "exact-head-merge (written for this repository; private drafts, no source repository)",
+    "revision": null,
+    "imported_files": {
+      "README.md": {
+        "source_sha256": "3fedc99bfd07050535e12829ff6974971c0e752a90c5d596694178f0541852dc",
+        "source_bytes": 3019
+      },
+      "merge-exact-head.sh": {
+        "source_sha256": "154d25bd956f4a49db94290a2be7c66314daaac91b6ce211b746008843b52c91",
+        "source_bytes": 3999
+      },
+      "tests/test-merge-exact-head.sh": {
+        "source_sha256": "7c7f958451dad0bb1573515eb8546d7239603b446f49ba7f0d6c2a5a80ac6ab8",
+        "source_bytes": 3630
+      }
+    }
+  },
+  "not_imported": [
+    "Git history",
+    "private drafting notes"
+  ],
+  "derivations": {},
+  "public_paths": [
+    "LICENSE",
+    "README.md",
+    "component-manifest.json",
+    "merge-exact-head.sh",
+    "tests/test-merge-exact-head.sh"
+  ],
+  "retained_files": {
+    "LICENSE": {
+      "sha256": "401c961f4a4faa51447f4e32a92941b2de4004fbbc959f458e6c1036faa82432",
+      "bytes": 1087
+    },
+    "README.md": {
+      "sha256": "3fedc99bfd07050535e12829ff6974971c0e752a90c5d596694178f0541852dc",
+      "bytes": 3019
+    },
+    "merge-exact-head.sh": {
+      "sha256": "154d25bd956f4a49db94290a2be7c66314daaac91b6ce211b746008843b52c91",
+      "bytes": 3999
+    },
+    "tests/test-merge-exact-head.sh": {
+      "sha256": "7c7f958451dad0bb1573515eb8546d7239603b446f49ba7f0d6c2a5a80ac6ab8",
+      "bytes": 3630
+    }
+  }
+}

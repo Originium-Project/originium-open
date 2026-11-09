@@ -30,6 +30,14 @@
     "visual-design-skill": {
       "manifest": "projects/visual-design-skill/component-manifest.json",
       "sha256": "377a501936a61958aaa71b8d43b4d2ae5910f95fa1c927dc0dccd3331cd5b806"
+    },
+    "exact-head-merge": {
+      "manifest": "projects/exact-head-merge/component-manifest.json",
+      "sha256": "7a94c38701b9dfcc0c82c65eff1661fcd07fb77492b52c97dbb12cda7214af6b"
+    },
+    "shell-pitfalls": {
+      "manifest": "projects/shell-pitfalls/component-manifest.json",
+      "sha256": "23cb67be7ddfe8a8f03fcb0179c4c8d1ae1aa2be6d8c0db193d1900880d456b4"
     }
   }
 }

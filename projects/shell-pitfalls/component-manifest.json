@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "component": "shell-pitfalls",
+  "status": "LOCAL_ADDITION_PENDING_PARENT_REVIEW",
+  "scope": "One Markdown page about six shell traps, each with a reproduction run on bash and zsh; no code files, dependencies, fonts or images. Historical approvals of the other components do not apply.",
+  "license": "MIT",
+  "copyright_owner": "Originium Project contributors",
+  "source": {
+    "name": "shell-pitfalls (written for this repository; private drafts, no source repository)",
+    "revision": null,
+    "imported_files": {
+      "README.md": {
+        "source_sha256": "64ab64e69d212e8666844b68092e9b6bc0cf8f51266aefbebf4f6b39d396acf4",
+        "source_bytes": 4062
+      }
+    }
+  },
+  "not_imported": [
+    "Git history",
+    "private drafting notes"
+  ],
+  "derivations": {},
+  "public_paths": [
+    "LICENSE",
+    "README.md",
+    "component-manifest.json"
+  ],
+  "retained_files": {
+    "LICENSE": {
+      "sha256": "401c961f4a4faa51447f4e32a92941b2de4004fbbc959f458e6c1036faa82432",
+      "bytes": 1087
+    },
+    "README.md": {
+      "sha256": "64ab64e69d212e8666844b68092e9b6bc0cf8f51266aefbebf4f6b39d396acf4",
+      "bytes": 4062
+    }
+  }
+}

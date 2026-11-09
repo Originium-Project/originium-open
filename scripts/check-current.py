@@ -14,9 +14,12 @@ SPEC.loader.exec_module(guard)
 # Adding a component requires both an inventory review and a runner implementation.
 COMPONENTS = {"research-mcp": "release-manifest.json",
               "token-flow-demo": "projects/token-flow-demo/component-manifest.json",
-              "visual-design-skill": "projects/visual-design-skill/component-manifest.json"}
+              "visual-design-skill": "projects/visual-design-skill/component-manifest.json",
+              "exact-head-merge": "projects/exact-head-merge/component-manifest.json",
+              "shell-pitfalls": "projects/shell-pitfalls/component-manifest.json"}
 # Components whose receipt lists retained_files with exact hashes and byte counts.
-RETAINED = {"token-flow-demo": "demo", "visual-design-skill": "visual-design-skill"}
+RETAINED = {"token-flow-demo": "demo", "visual-design-skill": "visual-design-skill",
+            "exact-head-merge": "exact-head-merge", "shell-pitfalls": "shell-pitfalls"}
 
 
 def paths(value):
