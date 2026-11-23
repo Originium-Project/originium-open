@@ -3,6 +3,7 @@
   "purpose": "local-validation-only",
   "root_paths": [
     ".gitignore",
+    "CHANGELOG.md",
     "CONTRIBUTING.md",
     "LICENSE",
     "LICENSING.md",
@@ -38,6 +39,18 @@
     "shell-pitfalls": {
       "manifest": "projects/shell-pitfalls/component-manifest.json",
       "sha256": "23cb67be7ddfe8a8f03fcb0179c4c8d1ae1aa2be6d8c0db193d1900880d456b4"
+    },
+    "isolated-browser-launcher": {
+      "manifest": "projects/isolated-browser-launcher/component-manifest.json",
+      "sha256": "249f7a9cc390ec98a46fe43c488bad92814fd3bec438ef280eb94b22c99033ee"
+    },
+    "agent-push-guards": {
+      "manifest": "projects/agent-push-guards/component-manifest.json",
+      "sha256": "b201d5db3cd20e15c70de7ed866c642ee1adc8470b8afe59e29b7f0d7aef2a15"
+    },
+    "temp-root-runner": {
+      "manifest": "projects/temp-root-runner/component-manifest.json",
+      "sha256": "a00ee43b82eb75de18d137794f3fe2012a3b6a6b128850e7234528b8d147ae77"
     }
   }
 }

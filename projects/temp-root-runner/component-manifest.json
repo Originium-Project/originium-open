@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "component": "temp-root-runner",
+  "status": "LOCAL_ADDITION_PENDING_PARENT_REVIEW",
+  "scope": "One Node file (built-in modules only; tested on Node 24) that runs a command with its own short temporary directory as TMPDIR and removes it on exit or signal, with a test file of eight offline tests. No dependencies, fonts or images are bundled. Earlier component approvals do not apply.",
+  "license": "MIT",
+  "copyright_owner": "Originium Project contributors",
+  "source": {
+    "name": "temp-root-runner (extracted from a private repository; the public files were stripped of project-specific names and carry no history)",
+    "revision": null,
+    "imported_files": {}
+  },
+  "not_imported": [
+    "Git history",
+    "private drafting notes",
+    "project-specific names, paths and issue numbers"
+  ],
+  "derivations": {
+    "temp-root.mjs": "Generalised from a private test-runner helper: the keep switch renamed to KEEP_TEMP_ROOT, a command-line entry added, organisation wording removed.",
+    "tests/temp-root.test.mjs": "Newly written for this component."
+  },
+  "public_paths": [
+    "LICENSE",
+    "README.md",
+    "component-manifest.json",
+    "temp-root.mjs",
+    "tests/temp-root.test.mjs"
+  ],
+  "retained_files": {
+    "LICENSE": {
+      "sha256": "401c961f4a4faa51447f4e32a92941b2de4004fbbc959f458e6c1036faa82432",
+      "bytes": 1087
+    },
+    "README.md": {
+      "sha256": "317fe134db979ae8ca8b30ce319645884e0ab46f6a0f205c79d1aed100f325dd",
+      "bytes": 1756
+    },
+    "temp-root.mjs": {
+      "sha256": "ae660031629dc4400db64c17e5f8eb4fe9e0c6bd3782e151cdb12d8611ab747c",
+      "bytes": 3478
+    },
+    "tests/temp-root.test.mjs": {
+      "sha256": "fcad8a938fd3c50d5c15065009fcf262f0200baadab7a8f1800e9cb713985da9",
+      "bytes": 4983
+    }
+  }
+}
