@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "component": "agent-push-guards",
+  "status": "LOCAL_ADDITION_PENDING_PARENT_REVIEW",
+  "scope": "A pre-push hook and a helper script (Bash and Git; the lock needs Linux flock and /proc) for checkouts shared by several coding agents: role-address commits only, no deletion or force-push of the protected branch, an optional scan command, the pushed commit must be the clean HEAD, and the test command runs under one machine-wide file lock. Offline tests with throwaway repositories. No dependencies, fonts or images are bundled. Earlier component approvals do not apply.",
+  "license": "MIT",
+  "copyright_owner": "Originium Project contributors",
+  "source": {
+    "name": "agent-push-guards (extracted from a private repository; the public files were stripped of project-specific names and carry no history)",
+    "revision": null,
+    "imported_files": {}
+  },
+  "not_imported": [
+    "Git history",
+    "private drafting notes",
+    "project-specific names, paths and issue numbers"
+  ],
+  "derivations": {
+    "pre-push": "Generalised from a private hook: environment variables renamed to PUSH_GUARD_*, the private scanner call replaced by an optional PUSH_GUARD_SCAN command, the inline personal-address check replaced by the identity helper, organisation wording removed.",
+    "check-identity.sh": "Role-address pattern made configurable (PUSH_GUARD_ROLE_PATTERN); organisation wording removed.",
+    "tests/check-identity.test.sh": "Fixture addresses replaced by example addresses; the last case checks the new hook text.",
+    "tests/pre-push-head.test.mjs": "Renamed variables; the private scanner stub removed.",
+    "tests/pre-push-lock.test.mjs": "Renamed variables; the private scanner stub removed.",
+    "tests/pre-push-identity.test.mjs": "Rewritten for the identity helper and the optional scan command."
+  },
+  "public_paths": [
+    "LICENSE",
+    "README.md",
+    "check-identity.sh",
+    "component-manifest.json",
+    "pre-push",
+    "tests/check-identity.test.sh",
+    "tests/pre-push-head.test.mjs",
+    "tests/pre-push-identity.test.mjs",
+    "tests/pre-push-lock.test.mjs"
+  ],
+  "retained_files": {
+    "LICENSE": {
+      "sha256": "401c961f4a4faa51447f4e32a92941b2de4004fbbc959f458e6c1036faa82432",
+      "bytes": 1087
+    },
+    "README.md": {
+      "sha256": "e1a91dab983de475acd6f464184bd29dc19f9e0e6f0bbb618b79cca4fcabdeb7",
+      "bytes": 3383
+    },
+    "check-identity.sh": {
+      "sha256": "662be6a9adf6c45a4d64d51b4094964fae3cad70b55cd67c9fa47f2caf65c8bc",
+      "bytes": 1496
+    },
+    "pre-push": {
+      "sha256": "80dda49c43415f019d99f1a703a83339316f8bc3b50cf0faf7ea61cb6db1967a",
+      "bytes": 7470
+    },
+    "tests/check-identity.test.sh": {
+      "sha256": "71f0b03fd907acc6c0e23a10dea5cb499932a71cc3edce727cf7017497e41e90",
+      "bytes": 3324
+    },
+    "tests/pre-push-head.test.mjs": {
+      "sha256": "4917f5646cb35c6eebf060a3fb271b724a0a7d0988dc6056ff52f8d6507ce06e",
+      "bytes": 8616
+    },
+    "tests/pre-push-identity.test.mjs": {
+      "sha256": "dd248dc9f9f9bdafaa093fe82ff8fecd53bdbe54990ad2895897595d9d119fc7",
+      "bytes": 5395
+    },
+    "tests/pre-push-lock.test.mjs": {
+      "sha256": "a00bc3298ed622f470da93a5dc8c48e351c25cbff6c727b02c47d8093beba035",
+      "bytes": 15433
+    }
+  }
+}

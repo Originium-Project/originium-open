@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "component": "isolated-browser-launcher",
+  "status": "LOCAL_ADDITION_PENDING_PARENT_REVIEW",
+  "scope": "One Node file (Node 22+ for the global WebSocket, built-in modules only) that starts headless Chromium or Firefox for tests on a free port with a private temporary profile, a deadline on every wait and a guaranteed kill on exit; Firefox is driven over WebDriver BiDi with Chrome's protocol shape. Two offline test files use stand-in browsers; real-Firefox tests skip where none is installed. No dependencies, fonts or images are bundled. Earlier component approvals do not apply.",
+  "license": "MIT",
+  "copyright_owner": "Originium Project contributors",
+  "source": {
+    "name": "isolated-browser-launcher (extracted from a private repository; the public files were stripped of project-specific names and carry no history)",
+    "revision": null,
+    "imported_files": {}
+  },
+  "not_imported": [
+    "Git history",
+    "private drafting notes",
+    "project-specific names, paths and issue numbers"
+  ],
+  "derivations": {
+    "browser-launch.mjs": "Removed a product-specific default preload (a storage key and its helper) and replaced it by a generic preloadScript option, none by default, so a launch that passes no preloadScript preloads nothing (the private launcher preloaded one product choice by default); removed issue numbers and names of sibling files from the header and comments; renamed the temporary-directory prefix. The launch, kill, deadline and BiDi translation code is otherwise unchanged.",
+    "tests/launch.test.mjs": "Renamed from the private test; imports adjusted; the two small helpers it took from a sibling module are inlined; issue and file references removed.",
+    "tests/firefox.test.mjs": "Renamed from the private test; imports adjusted; the preload cases rewritten for the generic preloadScript option with neutral values; the exception-text helper inlined; issue, lane and sibling-file references, product-specific route strings, ports and view names replaced by neutral examples."
+  },
+  "public_paths": [
+    "LICENSE",
+    "README.md",
+    "browser-launch.mjs",
+    "component-manifest.json",
+    "tests/firefox.test.mjs",
+    "tests/launch.test.mjs"
+  ],
+  "retained_files": {
+    "LICENSE": {
+      "sha256": "401c961f4a4faa51447f4e32a92941b2de4004fbbc959f458e6c1036faa82432",
+      "bytes": 1087
+    },
+    "README.md": {
+      "sha256": "229f2aa0cfcc8ba959e13694ddb0a9c51f870a1b7a1eb355526fbe48a2b384fa",
+      "bytes": 3905
+    },
+    "browser-launch.mjs": {
+      "sha256": "c60b7ca8050a04cbae37ce06f089c8d26c13e15320e130a215c5f5ede7b48edd",
+      "bytes": 71524
+    },
+    "tests/firefox.test.mjs": {
+      "sha256": "4c4f8cbccb0678239c0ab24041b1ad376edc212f619f0c9106e9d063f953c0c0",
+      "bytes": 65487
+    },
+    "tests/launch.test.mjs": {
+      "sha256": "ece2fcec19bed3654e025c7441f696b2caf06c159d8ab684f1714cc478f7bf3b",
+      "bytes": 15092
+    }
+  }
+}

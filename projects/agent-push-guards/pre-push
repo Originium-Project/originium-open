@@ -1,0 +1,135 @@
+#!/usr/bin/env bash
+# Pre-push guard for checkouts shared by several coding agents. In order, for every pushed ref it:
+#   1. refuses new commits whose author or committer address is not a role address (check-identity.sh);
+#   2. refuses deleting the protected branch, and a non-fast-forward push to it;
+#   3. optionally runs PUSH_GUARD_SCAN over the pushed range;
+# then, if package.json exists, requires the pushed commit to be the clean HEAD of this checkout and runs the test
+# command while holding one machine-wide file lock, so full suites queue (Linux: flock and /proc).
+#
+# Environment:
+#   PUSH_GUARD_DIR               directory holding check-identity.sh (default: the directory of this hook)
+#   PUSH_GUARD_ROLE_PATTERN      shell glob for allowed addresses (default *@users.noreply.local; see check-identity.sh)
+#   PUSH_GUARD_OWNER_PUSH=1      a person pushing their own commits: skip the identity check
+#   PUSH_GUARD_PROTECTED_BRANCH  branch that may not be deleted or force-pushed (default main)
+#   PUSH_GUARD_ALLOW_FORCE=1     allow a non-fast-forward push to the protected branch
+#   PUSH_GUARD_SCAN              optional command, run as "$PUSH_GUARD_SCAN <range>" per pushed ref; failure blocks.
+#                                <range> is ONE argument, a git rev-list expression: "<sha> --not --remotes" for a new
+#                                branch, "<old>..<new>" otherwise
+#   PUSH_GUARD_TEST_COMMAND      test command (default "npm test"), run only when package.json exists
+#   PUSH_GUARD_SKIP_TESTS=1      skip the clean-HEAD check, the lock and the tests
+#   PUSH_GUARD_SUITE_LOCK        lock file (default ${XDG_CACHE_HOME:-$HOME/.cache}/push-guard-suite.lock)
+#   PUSH_GUARD_SUITE_LOCK_WAIT   seconds to wait for the lock (default 5400)
+set -u
+root=$(git rev-parse --show-toplevel); zero=0000000000000000000000000000000000000000; status=0; pushed_shas=()
+self=$(readlink -f "$0" 2>/dev/null || echo "$0")
+guard_dir=${PUSH_GUARD_DIR:-$(dirname "$self")}
+protected=${PUSH_GUARD_PROTECTED_BRANCH:-main}
+while read -r local_ref local_sha remote_ref remote_sha; do
+  if [ "$local_sha" = "$zero" ]; then
+    [ "$remote_ref" = "refs/heads/$protected" ] && { echo "pre-push: deleting $protected is blocked" >&2; exit 1; }
+    continue
+  fi
+  # Identity first, before any scan or suite; it sees only the local sha and picks its own range.
+  "$guard_dir/check-identity.sh" "$local_sha" || exit 1
+  pushed_shas+=("$local_sha")
+  if [ "$remote_sha" = "$zero" ]; then
+    range="$local_sha --not --remotes"
+  else
+    if [ "$remote_ref" = "refs/heads/$protected" ] && ! git merge-base --is-ancestor "$remote_sha" "$local_sha" 2>/dev/null && [ "${PUSH_GUARD_ALLOW_FORCE:-}" != 1 ]; then
+      echo "pre-push: non-fast-forward push to $protected is blocked (PUSH_GUARD_ALLOW_FORCE=1 only with explicit approval)" >&2; exit 1
+    fi
+    range="$remote_sha..$local_sha"
+  fi
+  if [ -n "${PUSH_GUARD_SCAN:-}" ]; then
+    bash -c "$PUSH_GUARD_SCAN"' "$@"' scan "$range" || { echo "pre-push: the scan failed for $range" >&2; status=1; }
+  fi
+done
+[ "$status" -eq 0 ] || exit 1
+
+# An unreadable descriptor or fdinfo does not establish ownership; waiting preserves mutual exclusion.
+ancestor_holds_lock() {
+  local lock=$1 dev ino fd info rest state ppid pid=$$
+  [ -r /proc/self/fdinfo ] || return 2
+  read -r dev ino < <(stat -L -c '%D %i' "$lock" 2>/dev/null) || return 2
+  [ -n "${dev:-}" ] && [ -n "${ino:-}" ] || return 2
+  while [ -n "$pid" ]; do
+    for fd in "/proc/$pid/fd/"*; do
+      [ "$(stat -L -c '%D %i' "$fd" 2>/dev/null)" = "$dev $ino" ] || continue
+      info="/proc/$pid/fdinfo/${fd##*/}"
+      # Only an exclusive (WRITE) flock is the suite lock; a shared hold does not exclude another suite.
+      [ -r "$info" ] && grep -q '^lock:.* FLOCK .* WRITE ' "$info" 2>/dev/null && return 0
+    done
+    [ "$pid" = 1 ] && break
+    read -r rest < "/proc/$pid/stat" 2>/dev/null || return 1
+    rest=${rest##*) }; read -r state ppid _ <<<"$rest"
+    pid=$ppid
+  done
+  return 1
+}
+
+# Test processes must not inherit any descriptor for the suite lock.
+close_lock_fds() {
+  local dev ino fd
+  [ -n "$lock" ] || return 0
+  read -r dev ino < <(stat -L -c '%D %i' "$lock" 2>/dev/null) || return 0
+  [ -n "${dev:-}" ] && [ -n "${ino:-}" ] || return 0
+  for fd in /proc/$BASHPID/fd/*; do
+    [ "$(stat -L -c '%D %i' "$fd" 2>/dev/null)" = "$dev $ino" ] || continue
+    eval "exec ${fd##*/}>&-"
+  done
+}
+
+if [ -f "$root/package.json" ] && [ "${PUSH_GUARD_SKIP_TESTS:-}" != 1 ]; then
+  test_command=${PUSH_GUARD_TEST_COMMAND:-npm test}
+  # The suite runs on this checkout, so every pushed commit must be its clean HEAD.
+  head_sha=$(git rev-parse HEAD)
+  for sha in ${pushed_shas[@]+"${pushed_shas[@]}"}; do
+    if [ "$sha" != "$head_sha" ]; then
+      echo "pre-push: pushed commit $sha is not HEAD $head_sha; push from a clean checkout of that commit, or run the full suite on it and push with PUSH_GUARD_SKIP_TESTS=1" >&2
+      exit 1
+    fi
+  done
+  if [ -n "$(git status --porcelain)" ]; then
+    echo "pre-push: the checkout has uncommitted changes; push from a clean checkout of the pushed commit, or run the full suite on it and push with PUSH_GUARD_SKIP_TESTS=1" >&2
+    exit 1
+  fi
+  # The machine runs one full suite at a time; every suite runs while this lock is held.
+  lock=${PUSH_GUARD_SUITE_LOCK:-}
+  if [ -z "$lock" ]; then
+    cache=${XDG_CACHE_HOME:-}
+    if [ -z "$cache" ] && [ -n "${HOME:-}" ]; then cache=$HOME/.cache; fi
+    if [ -n "$cache" ]; then lock=$cache/push-guard-suite.lock; fi
+  fi
+  lock_wait=${PUSH_GUARD_SUITE_LOCK_WAIT:-5400}
+  if [ -z "$lock" ]; then
+    echo "pre-push: no suite lock path; running tests without the suite lock" >&2
+  elif ! command -v flock >/dev/null 2>&1; then
+    echo "pre-push: flock(1) is unavailable; running tests without the suite lock" >&2
+  elif [ ! -r /proc/self/fdinfo ]; then
+    echo "pre-push: /proc/self/fdinfo is unreadable; running tests without the suite lock" >&2
+  elif ancestor_holds_lock "$lock"; then
+    : # An ancestor already holds the lock, so a nested flock would deadlock against it.
+  else
+    mkdir -p "$(dirname "$lock")" || exit 1
+    # The hook holds fd 9 until the suite finishes; test processes do not inherit lock descriptors.
+    exec 9>>"$lock" || { echo "pre-push: cannot open suite lock $lock" >&2; exit 1; }
+    # Say so when another suite holds it, so a long wait does not look like a hang.
+    if ! flock -n 9; then
+      echo "pre-push: another suite holds $lock; waiting up to ${lock_wait}s for it" >&2
+      if ! flock -w "$lock_wait" 9; then
+        echo "pre-push: suite lock $lock was not acquired within ${lock_wait}s; refusing to run tests outside the queue" >&2
+        exit 1
+      fi
+    fi
+  fi
+  # Hooks run with repository-local variables such as GIT_DIR exported (always from linked worktrees); tests that
+  # create scratch repositories must not inherit them, or they rewrite this repository.
+  # The output is kept only when a test fails, so the failure can be read without running the suite again.
+  log=$(mktemp "${TMPDIR:-/tmp}/push-guard-tests.XXXXXX") || exit 1
+  if ! (cd "$root" && unset $(git rev-parse --local-env-vars) GIT_AUTHOR_NAME GIT_AUTHOR_EMAIL GIT_COMMITTER_NAME GIT_COMMITTER_EMAIL && close_lock_fds && eval "$test_command" >"$log" 2>&1); then
+    echo "pre-push: the test command failed ($test_command); the end of its output follows (full log: $log)" >&2
+    tail -n 60 "$log" >&2
+    exit 1
+  fi
+  rm -f "$log"
+fi

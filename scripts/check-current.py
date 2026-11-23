@@ -16,10 +16,15 @@ COMPONENTS = {"research-mcp": "release-manifest.json",
               "token-flow-demo": "projects/token-flow-demo/component-manifest.json",
               "visual-design-skill": "projects/visual-design-skill/component-manifest.json",
               "exact-head-merge": "projects/exact-head-merge/component-manifest.json",
-              "shell-pitfalls": "projects/shell-pitfalls/component-manifest.json"}
+              "shell-pitfalls": "projects/shell-pitfalls/component-manifest.json",
+              "isolated-browser-launcher": "projects/isolated-browser-launcher/component-manifest.json",
+              "agent-push-guards": "projects/agent-push-guards/component-manifest.json",
+              "temp-root-runner": "projects/temp-root-runner/component-manifest.json"}
 # Components whose receipt lists retained_files with exact hashes and byte counts.
 RETAINED = {"token-flow-demo": "demo", "visual-design-skill": "visual-design-skill",
-            "exact-head-merge": "exact-head-merge", "shell-pitfalls": "shell-pitfalls"}
+            "exact-head-merge": "exact-head-merge", "shell-pitfalls": "shell-pitfalls",
+            "isolated-browser-launcher": "isolated-browser-launcher",
+            "agent-push-guards": "agent-push-guards", "temp-root-runner": "temp-root-runner"}
 
 
 def paths(value):
